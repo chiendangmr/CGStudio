@@ -777,9 +777,7 @@ namespace HDCGStudio
             tempInfoView.tempObj.Status = status;
             gvTempInfo.RefreshData();
         }
-
-        //string path = @"d:\1.txt";
-        //File.WriteAllText(path, updateStr1);
+        
         private void timer1_Tick(object sender, EventArgs e)
         {
             try
