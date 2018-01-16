@@ -12,7 +12,7 @@ namespace HDCGStudio {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.5.0.0")]
     internal sealed partial class AppSetting : global::System.Configuration.ApplicationSettingsBase {
         
         private static AppSetting defaultInstance = ((AppSetting)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new AppSetting())));
@@ -55,7 +55,7 @@ namespace HDCGStudio {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\HDCGStudio\\CGServer\\Server\\media")]
+        [global::System.Configuration.DefaultSettingValueAttribute("E:\\Videos")]
         public string VideoFolder {
             get {
                 return ((string)(this["VideoFolder"]));
@@ -64,7 +64,7 @@ namespace HDCGStudio {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\HDCGStudio\\CGTemplates")]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\2018\\CG Nam Dong\\CGTemplates")]
         public string TemplateFolder {
             get {
                 return ((string)(this["TemplateFolder"]));

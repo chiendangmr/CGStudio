@@ -575,9 +575,9 @@ namespace HDCGStudio
                     backgroundWorker1.RunWorkerAsync();
                 }
                 frmInput = new EditForm("HDTemplates\\" + "Input" + "\\" + tempName);
-                //frmInput.Show();
+                
                 frmInput.LoadTemplateHost(Path.Combine(AppSetting.Default.TemplateFolder, "cg20.fth.1080i5000"));
-                //frmInput.Hide();
+                
                 isUpdated = true;
                 var tempInfoView = gvTempInfo.GetFocusedRow() as View.tempInfo;
                 tempName = getTemplateName(tempInfoView.tempObj.TemplateName.ToString());

@@ -68,12 +68,9 @@
             this.cboVideoLayer = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.btnStart = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.lbSmPanel = new DevExpress.XtraEditors.ListBoxControl();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gridTempInfo = new DevExpress.XtraGrid.GridControl();
             this.tempInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gvTempInfo = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -83,10 +80,15 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.btnStart = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.lbSmPanel = new DevExpress.XtraEditors.ListBoxControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.btnStop = new DevExpress.XtraEditors.SimpleButton();
             this.btnPlay = new DevExpress.XtraEditors.SimpleButton();
@@ -95,6 +97,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -111,15 +114,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboVideoLayer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lbSmPanel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTempInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempInfoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvTempInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbSmPanel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboTempLayer.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -250,16 +259,16 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlTop.Size = new System.Drawing.Size(1290, 25);
+            this.barDockControlTop.Size = new System.Drawing.Size(1262, 25);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 685);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 639);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1290, 34);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1262, 34);
             // 
             // barDockControlLeft
             // 
@@ -268,16 +277,16 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 25);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 660);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 614);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1290, 25);
+            this.barDockControlRight.Location = new System.Drawing.Point(1262, 25);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 660);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 614);
             // 
             // barSubItem1
             // 
@@ -316,10 +325,11 @@
             this.groupControl1.Controls.Add(this.labelControl22);
             this.groupControl1.Controls.Add(this.cboVideoLayer);
             this.groupControl1.Controls.Add(this.labelControl21);
-            this.groupControl1.Location = new System.Drawing.Point(14, 34);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1270, 206);
+            this.groupControl1.Size = new System.Drawing.Size(1262, 209);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Videos, Images";
             // 
@@ -332,7 +342,7 @@
             this.panelControl11.Location = new System.Drawing.Point(518, 30);
             this.panelControl11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelControl11.Name = "panelControl11";
-            this.panelControl11.Size = new System.Drawing.Size(738, 169);
+            this.panelControl11.Size = new System.Drawing.Size(730, 172);
             this.panelControl11.TabIndex = 46;
             // 
             // grdVideo
@@ -347,7 +357,7 @@
             this.grdVideo.Name = "grdVideo";
             this.grdVideo.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.grdVideo.Size = new System.Drawing.Size(734, 165);
+            this.grdVideo.Size = new System.Drawing.Size(726, 168);
             this.grdVideo.TabIndex = 18;
             this.grdVideo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvVideo});
@@ -572,130 +582,101 @@
             this.groupControl3.AppearanceCaption.Options.UseTextOptions = true;
             this.groupControl3.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.groupControl3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupControl3.Controls.Add(this.panelControl2);
+            this.groupControl3.Controls.Add(this.panelControl1);
             this.groupControl3.Controls.Add(this.btnStart);
             this.groupControl3.Controls.Add(this.labelControl4);
             this.groupControl3.Controls.Add(this.numericUpDown2);
             this.groupControl3.Controls.Add(this.numericUpDown1);
             this.groupControl3.Controls.Add(this.labelControl3);
             this.groupControl3.Controls.Add(this.checkEdit1);
-            this.groupControl3.Controls.Add(this.gridTempInfo);
             this.groupControl3.Controls.Add(this.labelControl1);
             this.groupControl3.Controls.Add(this.simpleButton3);
             this.groupControl3.Controls.Add(this.simpleButton1);
-            this.groupControl3.Controls.Add(this.lbSmPanel);
             this.groupControl3.Controls.Add(this.labelControl5);
             this.groupControl3.Controls.Add(this.btnStop);
             this.groupControl3.Controls.Add(this.btnPlay);
             this.groupControl3.Controls.Add(this.btnEditTemplate);
             this.groupControl3.Controls.Add(this.cboTempLayer);
             this.groupControl3.Controls.Add(this.labelControl2);
-            this.groupControl3.Location = new System.Drawing.Point(14, 240);
+            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl3.Location = new System.Drawing.Point(0, 0);
             this.groupControl3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(1276, 441);
+            this.groupControl3.Size = new System.Drawing.Size(1262, 399);
             this.groupControl3.TabIndex = 15;
             this.groupControl3.Text = "Templates";
             // 
-            // btnStart
+            // panelControl2
             // 
-            this.btnStart.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.btnStart.Appearance.Options.UseFont = true;
-            this.btnStart.Location = new System.Drawing.Point(700, 41);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(392, 42);
-            this.btnStart.TabIndex = 82;
-            this.btnStart.Text = "Start Auto Play Mode";
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.panelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelControl2.Controls.Add(this.lbSmPanel);
+            this.panelControl2.Location = new System.Drawing.Point(12, 99);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(424, 291);
+            this.panelControl2.TabIndex = 84;
             // 
-            // labelControl4
+            // lbSmPanel
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(271, 69);
-            this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(78, 17);
-            this.labelControl4.TabIndex = 81;
-            this.labelControl4.Text = "Delay(ms): ";
+            this.lbSmPanel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lbSmPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbSmPanel.Items.AddRange(new object[] {
+            "LF Single Line",
+            "LF Winning Trainer",
+            "LF Unofficial Winner",
+            "LF Ticker (Small Panel)",
+            "D-LF Unofficial Racing",
+            "Betting Code",
+            "Selection",
+            "Pools Small - Phase 1",
+            "Replay",
+            "During Race",
+            "Trackform",
+            "Late Scratching",
+            "Top 8 Left",
+            "",
+            "",
+            "Generic Full Frame",
+            "FF Dividends Phase 1",
+            "FF Dividends Phase 1 Dead Heat",
+            "FF Market Movers",
+            "FF Race Cards",
+            "FF Market Order",
+            "FF Tickers (Big Panel)",
+            "Weather"});
+            this.lbSmPanel.Location = new System.Drawing.Point(2, 2);
+            this.lbSmPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lbSmPanel.MultiColumn = true;
+            this.lbSmPanel.Name = "lbSmPanel";
+            this.lbSmPanel.Size = new System.Drawing.Size(420, 287);
+            this.lbSmPanel.TabIndex = 69;
             // 
-            // numericUpDown2
+            // panelControl1
             // 
-            this.numericUpDown2.Increment = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Location = new System.Drawing.Point(353, 66);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(83, 23);
-            this.numericUpDown2.TabIndex = 80;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Increment = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Location = new System.Drawing.Point(353, 31);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(83, 23);
-            this.numericUpDown1.TabIndex = 79;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(251, 34);
-            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(101, 17);
-            this.labelControl3.TabIndex = 78;
-            this.labelControl3.Text = "Duration(ms): ";
-            // 
-            // checkEdit1
-            // 
-            this.checkEdit1.Location = new System.Drawing.Point(516, 34);
-            this.checkEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.checkEdit1.MenuManager = this.barManager1;
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.checkEdit1.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.checkEdit1.Properties.Appearance.Options.UseFont = true;
-            this.checkEdit1.Properties.Appearance.Options.UseForeColor = true;
-            this.checkEdit1.Properties.Caption = "Auto Mode:  ";
-            this.checkEdit1.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style1;
-            this.checkEdit1.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.checkEdit1.Size = new System.Drawing.Size(103, 22);
-            this.checkEdit1.TabIndex = 76;
-            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
+            this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControl1.Controls.Add(this.gridTempInfo);
+            this.panelControl1.Location = new System.Drawing.Point(520, 97);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(726, 295);
+            this.panelControl1.TabIndex = 83;
             // 
             // gridTempInfo
             // 
             this.gridTempInfo.DataSource = this.tempInfoBindingSource;
+            this.gridTempInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridTempInfo.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridTempInfo.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.gridTempInfo.Location = new System.Drawing.Point(518, 97);
+            this.gridTempInfo.Location = new System.Drawing.Point(2, 2);
             this.gridTempInfo.MainView = this.gvTempInfo;
             this.gridTempInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridTempInfo.MenuManager = this.barManager1;
             this.gridTempInfo.Name = "gridTempInfo";
             this.gridTempInfo.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit2});
-            this.gridTempInfo.Size = new System.Drawing.Size(738, 322);
+            this.gridTempInfo.Size = new System.Drawing.Size(722, 291);
             this.gridTempInfo.TabIndex = 19;
             this.gridTempInfo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvTempInfo});
@@ -808,6 +789,93 @@
             this.repositoryItemCheckEdit2.Caption = "Check";
             this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
             // 
+            // btnStart
+            // 
+            this.btnStart.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnStart.Appearance.Options.UseFont = true;
+            this.btnStart.Location = new System.Drawing.Point(700, 41);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(392, 42);
+            this.btnStart.TabIndex = 82;
+            this.btnStart.Text = "Start Auto Play Mode";
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Location = new System.Drawing.Point(271, 69);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(78, 17);
+            this.labelControl4.TabIndex = 81;
+            this.labelControl4.Text = "Delay(ms): ";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Location = new System.Drawing.Point(353, 66);
+            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(83, 23);
+            this.numericUpDown2.TabIndex = 80;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Location = new System.Drawing.Point(353, 31);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(83, 23);
+            this.numericUpDown1.TabIndex = 79;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(251, 34);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(101, 17);
+            this.labelControl3.TabIndex = 78;
+            this.labelControl3.Text = "Duration(ms): ";
+            // 
+            // checkEdit1
+            // 
+            this.checkEdit1.Location = new System.Drawing.Point(516, 34);
+            this.checkEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkEdit1.MenuManager = this.barManager1;
+            this.checkEdit1.Name = "checkEdit1";
+            this.checkEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.checkEdit1.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.checkEdit1.Properties.Appearance.Options.UseFont = true;
+            this.checkEdit1.Properties.Appearance.Options.UseForeColor = true;
+            this.checkEdit1.Properties.Caption = "Auto Mode:  ";
+            this.checkEdit1.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style1;
+            this.checkEdit1.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.checkEdit1.Size = new System.Drawing.Size(103, 22);
+            this.checkEdit1.TabIndex = 76;
+            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
+            // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -847,41 +915,6 @@
             this.simpleButton1.ToolTip = "Add to Playlist";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
-            // lbSmPanel
-            // 
-            this.lbSmPanel.Items.AddRange(new object[] {
-            "LF Single Line",
-            "LF Winning Trainer",
-            "LF Unofficial Winner",
-            "LF Ticker (Small Panel)",
-            "D-LF Unofficial Racing",
-            "Betting Code",
-            "Selection",
-            "Pools Small - Phase 1",
-            "Replay",
-            "During Race",
-            "Trackform",
-            "Late Scratching",
-            "Top 8 Left",
-            "",
-            "",
-            "",
-            "",
-            "Generic Full Frame",
-            "FF Dividends Phase 1",
-            "FF Dividends Phase 1 Dead Heat",
-            "FF Market Movers",
-            "FF Race Cards",
-            "FF Market Order",
-            "FF Tickers (Big Panel)",
-            "Weather"});
-            this.lbSmPanel.Location = new System.Drawing.Point(27, 97);
-            this.lbSmPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lbSmPanel.MultiColumn = true;
-            this.lbSmPanel.Name = "lbSmPanel";
-            this.lbSmPanel.Size = new System.Drawing.Size(409, 322);
-            this.lbSmPanel.TabIndex = 69;
-            // 
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
@@ -900,10 +933,10 @@
             this.btnStop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnStop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnStop.ImageOptions.Image")));
             this.btnStop.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnStop.Location = new System.Drawing.Point(443, 353);
+            this.btnStop.Location = new System.Drawing.Point(443, 325);
             this.btnStop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(68, 66);
+            this.btnStop.Size = new System.Drawing.Size(68, 51);
             this.btnStop.TabIndex = 61;
             this.btnStop.ToolTip = "Stop Template";
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
@@ -915,10 +948,10 @@
             this.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnPlay.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPlay.ImageOptions.Image")));
             this.btnPlay.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnPlay.Location = new System.Drawing.Point(443, 271);
+            this.btnPlay.Location = new System.Drawing.Point(443, 260);
             this.btnPlay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(68, 75);
+            this.btnPlay.Size = new System.Drawing.Size(68, 54);
             this.btnPlay.TabIndex = 60;
             this.btnPlay.ToolTip = "Play Template";
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
@@ -932,7 +965,7 @@
             this.btnEditTemplate.Location = new System.Drawing.Point(443, 193);
             this.btnEditTemplate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEditTemplate.Name = "btnEditTemplate";
-            this.btnEditTemplate.Size = new System.Drawing.Size(68, 70);
+            this.btnEditTemplate.Size = new System.Drawing.Size(68, 59);
             this.btnEditTemplate.TabIndex = 50;
             this.btnEditTemplate.ToolTip = "Update and Preview Template";
             this.btnEditTemplate.Click += new System.EventHandler(this.btnEditTemplate_Click);
@@ -992,21 +1025,34 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Horizontal = false;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.groupControl3);
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(1262, 614);
+            this.splitContainerControl1.SplitterPosition = 209;
+            this.splitContainerControl1.TabIndex = 20;
+            this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1290, 719);
-            this.Controls.Add(this.groupControl3);
-            this.Controls.Add(this.groupControl1);
+            this.ClientSize = new System.Drawing.Size(1262, 673);
+            this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HDCGStudio";
@@ -1030,15 +1076,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lbSmPanel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridTempInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempInfoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvTempInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbSmPanel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboTempLayer.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1111,5 +1163,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
     }
 }
