@@ -35,7 +35,6 @@
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.cboFormat = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.mnuHelp = new DevExpress.XtraBars.BarSubItem();
             this.mnuAbout = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -45,6 +44,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.tServer = new System.Windows.Forms.Timer(this.components);
@@ -85,10 +85,10 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.cbAutoMode = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnRemoveTemplate = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAddTemplate = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.btnStop = new DevExpress.XtraEditors.SimpleButton();
             this.btnPlay = new DevExpress.XtraEditors.SimpleButton();
@@ -96,7 +96,6 @@
             this.cboTempLayer = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
@@ -125,7 +124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbAutoMode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboTempLayer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -151,7 +150,7 @@
             this.cboFormat,
             this.barSubItem1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 9;
+            this.barManager1.MaxItemId = 10;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1,
             this.repositoryItemComboBox1});
@@ -166,7 +165,6 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.cboFormat, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.mnuHelp)});
             this.bar2.OptionsBar.DisableClose = true;
             this.bar2.OptionsBar.DisableCustomization = true;
@@ -199,13 +197,6 @@
             "HD1080i50"});
             this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
             this.repositoryItemComboBox1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Choose Meeting";
-            this.barButtonItem1.Id = 8;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // mnuHelp
             // 
@@ -287,6 +278,11 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 614);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Id = 9;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // barSubItem1
             // 
@@ -589,10 +585,10 @@
             this.groupControl3.Controls.Add(this.numericUpDown2);
             this.groupControl3.Controls.Add(this.numericUpDown1);
             this.groupControl3.Controls.Add(this.labelControl3);
-            this.groupControl3.Controls.Add(this.checkEdit1);
+            this.groupControl3.Controls.Add(this.cbAutoMode);
             this.groupControl3.Controls.Add(this.labelControl1);
-            this.groupControl3.Controls.Add(this.simpleButton3);
-            this.groupControl3.Controls.Add(this.simpleButton1);
+            this.groupControl3.Controls.Add(this.btnRemoveTemplate);
+            this.groupControl3.Controls.Add(this.btnAddTemplate);
             this.groupControl3.Controls.Add(this.labelControl5);
             this.groupControl3.Controls.Add(this.btnStop);
             this.groupControl3.Controls.Add(this.btnPlay);
@@ -859,22 +855,22 @@
             this.labelControl3.TabIndex = 78;
             this.labelControl3.Text = "Duration(ms): ";
             // 
-            // checkEdit1
+            // cbAutoMode
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(516, 34);
-            this.checkEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.checkEdit1.MenuManager = this.barManager1;
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.checkEdit1.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.checkEdit1.Properties.Appearance.Options.UseFont = true;
-            this.checkEdit1.Properties.Appearance.Options.UseForeColor = true;
-            this.checkEdit1.Properties.Caption = "Auto Mode:  ";
-            this.checkEdit1.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style1;
-            this.checkEdit1.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.checkEdit1.Size = new System.Drawing.Size(103, 22);
-            this.checkEdit1.TabIndex = 76;
-            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
+            this.cbAutoMode.Location = new System.Drawing.Point(516, 34);
+            this.cbAutoMode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbAutoMode.MenuManager = this.barManager1;
+            this.cbAutoMode.Name = "cbAutoMode";
+            this.cbAutoMode.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.cbAutoMode.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.cbAutoMode.Properties.Appearance.Options.UseFont = true;
+            this.cbAutoMode.Properties.Appearance.Options.UseForeColor = true;
+            this.cbAutoMode.Properties.Caption = "Auto Mode:  ";
+            this.cbAutoMode.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Style1;
+            this.cbAutoMode.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.cbAutoMode.Size = new System.Drawing.Size(103, 22);
+            this.cbAutoMode.TabIndex = 76;
+            this.cbAutoMode.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
             // labelControl1
             // 
@@ -887,33 +883,33 @@
             this.labelControl1.TabIndex = 74;
             this.labelControl1.Text = "Templates:";
             // 
-            // simpleButton3
+            // btnRemoveTemplate
             // 
-            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.simpleButton3.Appearance.Options.UseFont = true;
-            this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
-            this.simpleButton3.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton3.Location = new System.Drawing.Point(443, 144);
-            this.simpleButton3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(68, 42);
-            this.simpleButton3.TabIndex = 73;
-            this.simpleButton3.ToolTip = "Remove from Playlist";
-            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            this.btnRemoveTemplate.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnRemoveTemplate.Appearance.Options.UseFont = true;
+            this.btnRemoveTemplate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveTemplate.ImageOptions.Image")));
+            this.btnRemoveTemplate.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnRemoveTemplate.Location = new System.Drawing.Point(443, 144);
+            this.btnRemoveTemplate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRemoveTemplate.Name = "btnRemoveTemplate";
+            this.btnRemoveTemplate.Size = new System.Drawing.Size(68, 42);
+            this.btnRemoveTemplate.TabIndex = 73;
+            this.btnRemoveTemplate.ToolTip = "Remove from Playlist";
+            this.btnRemoveTemplate.Click += new System.EventHandler(this.btnRemoveTemplate_Click);
             // 
-            // simpleButton1
+            // btnAddTemplate
             // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton1.Location = new System.Drawing.Point(443, 97);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(68, 39);
-            this.simpleButton1.TabIndex = 71;
-            this.simpleButton1.ToolTip = "Add to Playlist";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.btnAddTemplate.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnAddTemplate.Appearance.Options.UseFont = true;
+            this.btnAddTemplate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAddTemplate.ImageOptions.Image")));
+            this.btnAddTemplate.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnAddTemplate.Location = new System.Drawing.Point(443, 97);
+            this.btnAddTemplate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAddTemplate.Name = "btnAddTemplate";
+            this.btnAddTemplate.Size = new System.Drawing.Size(68, 39);
+            this.btnAddTemplate.TabIndex = 71;
+            this.btnAddTemplate.ToolTip = "Add to Playlist";
+            this.btnAddTemplate.Click += new System.EventHandler(this.btnAddTemplate_Click);
             // 
             // labelControl5
             // 
@@ -1021,10 +1017,6 @@
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1087,7 +1079,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbAutoMode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboTempLayer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
@@ -1141,8 +1133,8 @@
         private DevExpress.XtraEditors.SimpleButton btnPlay;
         private System.Windows.Forms.BindingSource tempInfoBindingSource;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnRemoveTemplate;
+        private DevExpress.XtraEditors.SimpleButton btnAddTemplate;
         private DevExpress.XtraEditors.ListBoxControl lbSmPanel;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.GridControl gridTempInfo;
@@ -1150,7 +1142,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
-        private DevExpress.XtraEditors.CheckEdit checkEdit1;
+        private DevExpress.XtraEditors.CheckEdit cbAutoMode;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
@@ -1162,7 +1154,6 @@
         private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.PanelControl panelControl2;

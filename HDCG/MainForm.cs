@@ -32,14 +32,9 @@ namespace HDCGStudio
         }
 
         string videoXmlPath = "";
-        string tempInfoXmlPath = "";
-        string xml = "";
-        string uri = "https://10.0.2.5:3944/";
-        string userName = "graphics";
-        string userPassword = "graphics";
+        string tempInfoXmlPath = "";        
 
         EditForm frmInput = null;
-        MeetingInfo frmMeeting = null;
 
         HDCGControler.CasparCG cgServer = null;
         bool isRunning = false;
@@ -55,7 +50,6 @@ namespace HDCGStudio
 
                 cboVideoLayer.SelectedIndex = 0;
                 cboTempLayer.SelectedIndex = 5;
-                frmMeeting = new MeetingInfo();
 
                 videoXmlPath = Path.Combine(Application.StartupPath, "Video.xml");
                 try
@@ -209,11 +203,6 @@ namespace HDCGStudio
                 frmInput.Exit = true;
                 frmInput.Close();
             }
-            if (frmMeeting != null)
-            {
-                frmMeeting.Exit = true;
-                frmMeeting.Close();
-            }
         }
 
         private void gvVideo_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -236,19 +225,11 @@ namespace HDCGStudio
             {
                 int nTry = 0;
 
-            TryHere:
+                TryHere:
 
                 if (frmInput.player.Add(1, templateFile))
                 {
                     frmInput.player.InvokeMethod(1, "fadeUp");
-                    if (frmMeeting != null)
-                    {
-                        if (frmMeeting.getUpdated())
-                        {
-                            updateStr = "<Track_Property>" + frmMeeting.getXml() + xml + "</Track_Property>";
-                            frmInput.player.Update(1, updateStr);
-                        }
-                    }
 
                     frmInput.Show();
                     frmInput.Activate();
@@ -328,45 +309,16 @@ namespace HDCGStudio
                         else
                             upOK = cgServer.CutUp(layer);
                     }
-                    else if (checkEdit1.Checked)
+                    else if (cbAutoMode.Checked)
                     {
-                        if (frmMeeting != null)
-                        {
-                            string allStr = "";
-                            frmMeeting.Invoke((Action)(() =>
-                            {
-                                allStr = "<Track_Property>" + frmMeeting.getXml() + xml + "</Track_Property>";
-
-                            }));
-
-                            upOK = cgServer.FadeUp(layer, fadeUpDuration, allStr);
-                        }
-                        else upOK = cgServer.CutUp(layer);
+                        upOK = cgServer.CutUp(layer);
                     }
                     else
                     {
-                        string updateStr1 = "";
-                        frmMeeting.Invoke((Action)(() =>
-                        {
-                            updateStr1 = "<Track_Property>" + frmMeeting.getXml() + xml + "</Track_Property>";
-                        }));
-                        //string path = @"d:\1.txt";
-                        //string path2 = @"d:\2.txt";
-                        //File.WriteAllText(path, updateStr1);
+                        upOK = cgServer.CutUp(layer);
 
-                        //cgParameter = System.IO.File.ReadAllText(@"D:\2.txt");
-                        //File.WriteAllText(path2, cgParameter);
-                        upOK = cgServer.FadeUp(layer, fadeUpDuration, updateStr1);
                     }
-                else
-                {
-                    //cgParameter = System.IO.File.ReadAllText(@"D:\HDCGStudio\Model\1.txt");
-                    //upOK = cgServer.FadeUp(layer, fadeUpDuration, cgParameter);
-                    upOK = cgServer.CutUp(layer);
-                    //cgServer.SetParameters(layer, cgParameter);
-                }
-                //if (!upOK)
-                //    HDMessageBox.Show("Can't show cg in cg server", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 System.Threading.Timer timer = null;
                 if (tempInfoView.tempObj.Duration > 0)
                 {
@@ -540,17 +492,17 @@ namespace HDCGStudio
                 "hLfUnofficialRacing.ft",
                 "lateScratching.ft",
                 "lfParadeRing.ft",
-                "lfSingleLine.ft", 
+                "lfSingleLine.ft",
                 "lfUnofficialWinner.ft",
                 "lfWinningTrainer.ft",
                 "replay.ft",
                 "runningNumbers.ft",
                 "top8horse.ft",
                 "trackForm.ft",
-                "weather.ft", 
+                "weather.ft",
                 "ffRunOns.ft",
                 "GenericFullFrame.ft",
-                "Protest.ft", 
+                "Protest.ft",
                 "ffDeadheat2ndPage.ft",
                 "ffDividendsPhase1.ft",
                 "ffMarketMovers.ft",
@@ -570,14 +522,10 @@ namespace HDCGStudio
         {
             try
             {
-                if (!backgroundWorker1.IsBusy)
-                {
-                    backgroundWorker1.RunWorkerAsync();
-                }
                 frmInput = new EditForm("HDTemplates\\" + "Input" + "\\" + tempName);
-                
+
                 frmInput.LoadTemplateHost(Path.Combine(AppSetting.Default.TemplateFolder, "cg20.fth.1080i5000"));
-                
+
                 isUpdated = true;
                 var tempInfoView = gvTempInfo.GetFocusedRow() as View.tempInfo;
                 tempName = getTemplateName(tempInfoView.tempObj.TemplateName.ToString());
@@ -591,7 +539,7 @@ namespace HDCGStudio
             }
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void btnAddTemplate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -620,7 +568,7 @@ namespace HDCGStudio
                 HDMessageBox.Show("Please select a Template!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        private void simpleButton3_Click(object sender, EventArgs e)
+        private void btnRemoveTemplate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -794,7 +742,7 @@ namespace HDCGStudio
                 tempOther.tempObj.Status = "Waiting";
                 gvTempInfo.RefreshData();
             }
-            if (this.checkEdit1.Checked)
+            if (this.cbAutoMode.Checked)
             {
                 this.btnStart.Enabled = true;
                 autoPlay = true;
@@ -836,12 +784,6 @@ namespace HDCGStudio
         {
             try
             {
-                //File.WriteAllText(path, frmMeeting.getMeetingsNumber() + frmMeeting.getRaceNumber());
-                //text = System.IO.File.ReadAllText(@"D:\2.txt");
-                if (frmMeeting.getBegin())
-                {
-                    xml = "";
-                }
                 var tempInfoView = gvTempInfo.GetFocusedRow() as View.tempInfo;
 
                 if (!isPlaying)
@@ -851,16 +793,6 @@ namespace HDCGStudio
                 }
                 if (isUpdated)
                 {
-                    //File.WriteAllText(path, "Chien: " + xml +"\n");
-                    if (!backgroundWorker1.IsBusy)
-                    {
-                        backgroundWorker1.RunWorkerAsync();
-                    }
-
-                    frmMeeting.Invoke((Action)(() =>
-                    {
-                        updateStr = "<Track_Property>" + frmMeeting.getXml() + xml + "</Track_Property>";
-                    }));
 
                     frmInput.Invoke((Action)(() =>
                     {
@@ -927,344 +859,11 @@ namespace HDCGStudio
         {
             return isRunning;
         }
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            try
-            {
-                frmMeeting.Show();
-                frmMeeting.Activate();
-            }
-            catch (Exception ex)
-            {
-                HDMessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        public List<string> getVideoInfo(int meetingNumber, int raceNumber, string element, string field)
-        {
-            List<string> result = new List<string>();
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uri + "video");
-            try
-            {
-                string authInfo = userName + ":" + userPassword;
-                authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
-                ServicePointManager.ServerCertificateValidationCallback +=
-                    (sender, cert, chain, sslPolicyErrors) => true;
-                request.Method = "GET";
-                request.Host = "dtx";
-                request.Accept = "application/vnd.datatote.dtx.v2.0.0+xml";
-                request.Headers["Authorization"] = "Basic " + authInfo;
-
-                var response = request.GetResponse();
-                Stream resStream = response.GetResponseStream();
-
-                StreamReader reader = new StreamReader(resStream);
-
-                string meeting = string.Format("meeting=\"{0}\"", meetingNumber);
-                string race = string.Format("race=\"{0}\"", raceNumber);
-                while (!reader.EndOfStream)
-                {
-                    StringBuilder sb = new StringBuilder();
-
-                    while (!sb.ToString().EndsWith("</video>"))
-                    {
-                        char c = (char)reader.Read();
-                        sb.Append(c);
-                    }
-
-                    string text = PrintXML(sb.ToString());
-                    if (text.Contains(meeting))
-                    {
-                        if (text.Contains(race))
-                        {
-                            switch (element)
-                            {
-                                case "odds":
-                                    result = getOdds(text, field);
-                                    break;
-                                case "result":
-                                    result = getRaceResult(text, "1");
-                                    break;
-                                case "dividend":
-                                    result = getDividend(text, field);
-                                    break;
-                            }
-
-                            if (result.Count > 0) return result;
-
-                        }
-                    }
-                }
-                response.Close();
-                reader.Close();
-                resStream.Close();
-            }
-            catch (Exception ex)
-            {
-                HDMessageBox.Show("Please refresh your programs!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            finally
-            {
-                request.Abort();
-            }
-            return result;
-        }
-        public string getVideoInfoTotal(int meetingNumber, int raceNumber, string oddsField)
-        {
-            string result = "";
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uri + "video");
-            try
-            {
-                string authInfo = userName + ":" + userPassword;
-                authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
-                ServicePointManager.ServerCertificateValidationCallback +=
-                    (sender, cert, chain, sslPolicyErrors) => true;
-                request.Method = "GET";
-                request.Host = "dtx";
-                request.Accept = "application/vnd.datatote.dtx.v2.0.0+xml";
-                request.Headers["Authorization"] = "Basic " + authInfo;
-
-                var response = request.GetResponse();
-                Stream resStream = response.GetResponseStream();
-
-                StreamReader reader = new StreamReader(resStream);
-
-                string meeting = string.Format("meeting=\"{0}\"", meetingNumber);
-                string race = string.Format("race=\"{0}\"", raceNumber);
-                while (!reader.EndOfStream)
-                {
-                    StringBuilder sb = new StringBuilder();
-
-                    while (!sb.ToString().EndsWith("</video>"))
-                    {
-                        char c = (char)reader.Read();
-                        sb.Append(c);
-                    }
-
-                    string text = PrintXML(sb.ToString());
-                    if (text.Contains(meeting))
-                    {
-                        if (text.Contains(race))
-                        {
-                            result = getOddsTotal(text, oddsField);
-                            if (result.Length > 0) return result;
-
-                        }
-                    }
-                }
-                response.Close();
-                reader.Close();
-                resStream.Close();
-            }
-            catch (Exception ex)
-            {
-                HDMessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            finally
-            {
-                request.Abort();
-            }
-            return result;
-        }
-        List<string> kqList = new List<string>();
 
         private string Add(string xmlStr, string id, string val)
         {
             xmlStr = "<" + id + " id=\"" + id + "\"><data value=\"" + val + "\"/></" + id + ">";
             return xmlStr;
-        }
-
-        private void displayOdds(string oddsName)
-        {
-            try
-            {
-                int i = 1;
-                string oddsStr = "";
-                string strOdds = "";
-                string date = "";
-                string meeting = "";
-                string race = "";
-                string meetingNumber = "";
-                string raceNumber = "";
-                if (frmMeeting != null)
-                {
-                    frmMeeting.Invoke((Action)(() =>
-                    {
-                        date = frmMeeting.getDay();
-                    }));
-                    frmMeeting.Invoke((Action)(() =>
-                    {
-                        meeting = frmMeeting.getMeeting();
-                    }));
-                    frmMeeting.Invoke((Action)(() =>
-                    {
-                        race = frmMeeting.getRace();
-                    }));
-                    frmMeeting.Invoke((Action)(() =>
-                    {
-                        meetingNumber = frmMeeting.getMeetingsNumber();
-                    }));
-                    frmMeeting.Invoke((Action)(() =>
-                    {
-                        raceNumber = frmMeeting.getRaceNumber();
-                    }));
-                }
-                if (meeting != null && race != null)
-                {
-                    List<string> kq = getVideoInfo(int.Parse(meetingNumber), int.Parse(raceNumber), "odds", oddsName);
-                    //List<string> kq1 = getVideoInfo(int.Parse(meetingNumber), int.Parse(raceNumber), "result", "selections");
-                    //List<string> kq2 = getVideoInfo(int.Parse(meetingNumber), int.Parse(raceNumber), "dividend", "pool");
-                    //List<string> kq3 = getVideoInfo(int.Parse(meetingNumber), int.Parse(raceNumber), "dividend", "payoff");
-                    //File.WriteAllText(path, "Meeting: " + meetingNumber + " Race: " + raceNumber);
-                    //kq = getVideoInfo(int.Parse(meetingNumber), int.Parse(raceNumber), oddsName);
-                    switch (oddsName)
-                    {
-                        case "WIN":
-                            strOdds = "Win";
-                            break;
-                        case "PLC":
-                            strOdds = "Place";
-                            break;
-                    }
-                    if (kq.Count > 0)
-                    {
-                        foreach (var j in kq)
-                        {
-                            oddsStr = Add(xml, "f" + i.ToString() + strOdds, j);
-                            xml += oddsStr;
-                            kqList.Add(oddsStr);
-                            i++;
-                        }
-                    }
-                    //bool isDeatHeat = false;
-                    //if (kq1.Count > 0)
-                    //{
-                    //    for (i = 0; i < 3; i++)
-                    //    {
-                    //        if (kq1[i].Length > 2)
-                    //        {
-                    //            isDeatHeat = true;
-                    //            break;
-                    //        }
-                    //    }
-                    //}
-                    //#region DeatHeat
-                    //if (isDeatHeat)
-                    //{
-                    //    if (kq1[0].Length > 2)
-                    //    {
-                    //        oddsStr += Add(xml, "dvWin1", kq3[0]);
-                    //        oddsStr += Add(xml, "dvWin2", kq3[1]);
-                    //        oddsStr += Add(xml, "dvPlace1", kq3[2]);
-                    //        oddsStr += Add(xml, "dvPlace2", kq3[3]);
-                    //        oddsStr += Add(xml, "dvPlace3", kq3[4]);
-                    //        oddsStr += Add(xml, "quinVal1", kq3[5]);
-                    //        oddsStr += Add(xml, "quinVal2", kq3[6]);
-                    //        oddsStr += Add(xml, "triVal1", kq3[7]);
-                    //        oddsStr += Add(xml, "triVal2", kq3[8]);
-                    //    }
-                    //    else if (kq1[1].Length > 2)
-                    //    {
-                    //        oddsStr += Add(xml, "dvWin1", kq3[0]);
-                    //        oddsStr += Add(xml, "dvPlace1", kq3[1]);
-                    //        oddsStr += Add(xml, "dvPlace2", kq3[2]);
-                    //        oddsStr += Add(xml, "dvPlace3", kq3[3]);
-                    //        oddsStr += Add(xml, "dvPlace4", kq3[4]);
-                    //        oddsStr += Add(xml, "quinVal1", kq3[5]);
-                    //        oddsStr += Add(xml, "quinVal2", kq3[6]);
-                    //        oddsStr += Add(xml, "triVal1", kq3[7]);
-                    //        oddsStr += Add(xml, "triVal2", kq3[8]);
-                    //    } if (kq1[2].Length > 2)
-                    //    {
-                    //        oddsStr += Add(xml, "dvWin1", kq3[0]);
-                    //        oddsStr += Add(xml, "dvPlace1", kq3[1]);
-                    //        oddsStr += Add(xml, "dvPlace2", kq3[2]);
-                    //        oddsStr += Add(xml, "dvPlace3", kq3[3]);
-                    //        oddsStr += Add(xml, "dvPlace4", kq3[4]);
-                    //        oddsStr += Add(xml, "quinVal1", kq3[5]);
-                    //        oddsStr += Add(xml, "triVal1", kq3[6]);
-                    //        oddsStr += Add(xml, "triVal2", kq3[7]);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    oddsStr += Add(xml, "dvWin1", kq3[0]);
-                    //    oddsStr += Add(xml, "dvPlace1", kq3[1]);
-                    //    oddsStr += Add(xml, "dvPlace2", kq3[2]);
-                    //    oddsStr += Add(xml, "dvPlace3", kq3[3]);
-                    //    oddsStr += Add(xml, "quinVal1", kq3[4]);
-                    //    oddsStr += Add(xml, "triVal1", kq3[5]);
-                    //}
-                    //#endregion
-                }
-            }
-            catch
-            {
-
-            }
-        }
-        private void displayTotal(string oddsName)
-        {
-            try
-            {
-                string oddsStr = "";
-                string date = "";
-                string meeting = "";
-                string race = "";
-                string meetingNumber = "";
-                string raceNumber = "";
-                string strOdds = "";
-                if (frmMeeting != null)
-                {
-                    frmMeeting.Invoke((Action)(() =>
-                    {
-                        date = frmMeeting.getDay();
-                    }));
-                    frmMeeting.Invoke((Action)(() =>
-                    {
-                        meeting = frmMeeting.getMeeting();
-                    }));
-                    frmMeeting.Invoke((Action)(() =>
-                    {
-                        race = frmMeeting.getRace();
-                    }));
-                    frmMeeting.Invoke((Action)(() =>
-                    {
-                        meetingNumber = frmMeeting.getMeetingsNumber();
-                    }));
-                    frmMeeting.Invoke((Action)(() =>
-                    {
-                        raceNumber = frmMeeting.getRaceNumber();
-                    }));
-                }
-                if (meeting != null && race != null)
-                {
-                    string kq = getVideoInfoTotal(int.Parse(meetingNumber), int.Parse(raceNumber), oddsName);
-                    //File.WriteAllText(path, "Chien: " + kq);
-                    switch (oddsName)
-                    {
-                        case "WIN":
-                            strOdds = "WinTotal";
-                            break;
-                        case "PLC":
-                            strOdds = "PlaceTotal";
-                            break;
-                        case "TRI":
-                            strOdds = "TriTotal";
-                            break;
-                        case "QU":
-                            strOdds = "QuinTotal";
-                            break;
-                    }
-                    oddsStr = Add(oddsStr, strOdds, kq);
-                    xml += oddsStr;
-                    kqList.Add(oddsStr);
-                }
-            }
-            catch
-            {
-
-            }
         }
         private String PrintXML(String XML)
         {
@@ -1307,135 +906,5 @@ namespace HDCGStudio
 
             return Result;
         }
-        private List<String> getOdds(string oddsStr, string oddsField)
-        {
-            List<String> oddsInfo = new List<string>();
-            try
-            {
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(oddsStr);
-                XmlNodeList nodes = doc.DocumentElement.GetElementsByTagName("poolOdds");
-
-                foreach (XmlNode node in nodes)
-                {
-                    if (node.Attributes["pool"].Value == oddsField)
-                    {
-                        if (node.HasChildNodes)
-                        {
-                            for (int i = 0; i < node.ChildNodes.Count; i++)
-                            {
-                                if (node.ChildNodes[i].Attributes["pd"] != null)
-                                {
-                                    oddsInfo.Add(node.ChildNodes[i].Attributes["pd"].Value);
-                                }
-                            }
-                        }
-                    }
-
-                }
-            }
-            catch { }
-            return oddsInfo;
-        }
-        private List<String> getRaceResult(string resultStr, string resultField)
-        {
-            List<String> resultInfo = new List<string>();
-            try
-            {
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(resultStr);
-                XmlNodeList nodes = doc.DocumentElement.GetElementsByTagName("raceResult");
-
-                foreach (XmlNode node in nodes)
-                {
-                    if (node.Attributes["isOfficial"].Value == resultField)
-                    {
-                        if (node.HasChildNodes)
-                        {
-                            for (int i = 0; i < node.ChildNodes.Count; i++)
-                            {
-                                if (node.ChildNodes[i].Attributes["Selection"] != null)
-                                {
-                                    resultInfo.Add(node.ChildNodes[i].Attributes["Selection"].Value);
-                                }
-                            }
-                        }
-                    }
-
-                }
-            }
-            catch { }
-            return resultInfo;
-        }
-        private List<String> getDividend(string resultStr, string dvField)
-        {
-            List<String> resultInfo = new List<string>();
-            try
-            {
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(resultStr);
-                XmlNodeList nodes = doc.DocumentElement.GetElementsByTagName("dividends");
-
-                foreach (XmlNode node in nodes)
-                {
-                    if (node.HasChildNodes)
-                    {
-                        for (int i = 0; i < node.ChildNodes.Count; i++)
-                        {
-                            if (node.ChildNodes[i].Attributes[dvField] != null)
-                            {
-                                resultInfo.Add(node.ChildNodes[i].Attributes[dvField].Value);
-                            }
-                        }
-                    }
-                }
-
-            }
-
-            catch { }
-            return resultInfo;
-        }
-        private string getOddsTotal(string oddsStr, string oddsField)
-        {
-            string oddsInfoTotal = "";
-            try
-            {
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(oddsStr);
-                XmlNodeList nodes = doc.DocumentElement.GetElementsByTagName("poolOdds");
-
-                foreach (XmlNode node in nodes)
-                {
-                    if (node.Attributes["pool"].Value == oddsField)
-                    {
-                        oddsInfoTotal = node.Attributes["Value"].Value;
-                    }
-
-                }
-            }
-            catch { }
-            return oddsInfoTotal;
-        }
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {            
-            try
-            {
-                displayOdds("WIN");
-                displayOdds("PLC");
-                //displayTotal("WIN");
-                //displayTotal("PLC");
-                //displayTotal("TRI");
-                //displayTotal("QU");
-                if (kqList != null && kqList.Count > 0)
-                {
-                    for (int k = 0; k < kqList.Count; k++)
-                    {
-                        xml.Replace(kqList[k], "");
-                    }
-                }
-            }
-            catch { }            
-        }
-
     }
 }
