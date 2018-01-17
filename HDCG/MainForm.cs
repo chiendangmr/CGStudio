@@ -219,7 +219,7 @@ namespace HDCGStudio
         string updateStr = "";
         public string UpdateTemplate(string templateFileName, int fadeUpDuration = 0)
         {
-            string templateFile = "HDTemplates\\" + "Input" + "\\" + templateFileName;
+            string templateFile = "HDTemplates\\" + templateFileName;
 
             try
             {
@@ -259,7 +259,7 @@ namespace HDCGStudio
         {
             string templateFile = templateFileName;
             if (templateFileName != "PlayVideo")
-                templateFile = "HDTemplates\\" + "Input" + "\\" + templateFileName;
+                templateFile = "HDTemplates\\" + templateFileName;
 
             #region Parameter
             if ((DesignProperties != null && DesignProperties.Count > 0) || (RuntimeProperties != null && RuntimeProperties.Count > 0))
@@ -460,7 +460,7 @@ namespace HDCGStudio
                             OnTemplate(tempInfoView.tempObj.Layer, tempName, 1, null, runtimeProperties);
                             timer.Dispose();
                         },
-                    null, tempInfoView.tempObj.Delay, System.Threading.Timeout.Infinite);
+                    null, tempInfoView.tempObj.Delay, Timeout.Infinite);
                 }
             }
             catch
@@ -522,7 +522,7 @@ namespace HDCGStudio
         {
             try
             {
-                frmInput = new EditForm("HDTemplates\\" + "Input" + "\\" + tempName);
+                frmInput = new EditForm("HDTemplates\\" + tempName);
 
                 frmInput.LoadTemplateHost(Path.Combine(AppSetting.Default.TemplateFolder, "cg20.fth.1080i5000"));
 
@@ -798,7 +798,7 @@ namespace HDCGStudio
 
                     }));
 
-                    string templateFile = "HDTemplates\\" + "Input" + "\\" + tempName;
+                    string templateFile = "HDTemplates\\" + tempName;
                     if (!cgServer.Connect())
                         HDMessageBox.Show("Not connect to cg server!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     else

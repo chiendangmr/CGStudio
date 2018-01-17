@@ -631,8 +631,6 @@
             "Trackform",
             "Late Scratching",
             "Top 8 Left",
-            "",
-            "",
             "Generic Full Frame",
             "FF Dividends Phase 1",
             "FF Dividends Phase 1 Dead Heat",
