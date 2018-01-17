@@ -64,7 +64,7 @@ namespace HDCGStudio {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\2018\\CG Nam Dong\\CGTemplates")]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\2018\\CG Nam Dong\\Solution\\CGTemplates")]
         public string TemplateFolder {
             get {
                 return ((string)(this["TemplateFolder"]));

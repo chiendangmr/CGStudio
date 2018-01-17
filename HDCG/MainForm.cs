@@ -515,7 +515,8 @@ namespace HDCGStudio
                 "PoolsSmPhase1.ft",
                 "PoolsBigPhase2.ft",
                 "duringRace.ft",
-                "ffDividendsPhase1DeadHeat.ft"
+                "ffDividendsPhase1DeadHeat.ft",
+                "BangChoTruocTranDon.ft"
             };
         string tempName = "";
         private void btnEditTemplate_Click(object sender, EventArgs e)
@@ -680,6 +681,9 @@ namespace HDCGStudio
                     break;
                 case "During Race":
                     tempFullName = tempList[29];
+                    break;
+                case "Bảng chờ trước trận đơn":
+                    tempFullName = tempList[31];
                     break;
                 default:
                     tempFullName = tempList[0];
