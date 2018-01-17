@@ -76,8 +76,7 @@
 			this.myBar.visible = false;			
 			
 			ExternalInterface.addCallback("UpdateData", UpdateData);
-			ExternalInterface.addCallback("GetProperties", GetProperties);
-			Play();
+			ExternalInterface.addCallback("GetProperties", GetProperties);			
 		}		
 		
 		private function Add(xmlStr:String, str:String, txt:TextField){
