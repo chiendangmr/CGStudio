@@ -85,6 +85,15 @@
 		}
 		function GetProperties()
 		{
+			var xmlStr:String = "<Track_Property>";
+			xmlStr +=Add(xmlStr, "BigTitle", BigTitle);
+			xmlStr +=Add(xmlStr, "SmallTitle", SmallTitle);
+			xmlStr +=Add(xmlStr, "Player1", Player1);
+			xmlStr +=Add(xmlStr, "Player2", Player2);
+			xmlStr += "</Track_Property>";
+			
+			ExternalInterface.call("Properties", xmlStr);
+			return xmlStr;
 		}
 		function UpdateData(str:String)
 		{
