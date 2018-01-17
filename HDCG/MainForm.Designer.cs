@@ -619,6 +619,7 @@
             this.lbSmPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbSmPanel.Items.AddRange(new object[] {
             "Bảng chờ trước trận đơn",
+            "Bảng chờ trước trận đôi",
             "LF Single Line",
             "LF Winning Trainer",
             "LF Unofficial Winner",
