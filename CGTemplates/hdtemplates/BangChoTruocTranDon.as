@@ -62,13 +62,13 @@
 			this.addChild(txtGroup);
 			
 			this.addChild(maskBar);
-			this.maskBar.x = 195;
-			this.maskBar.y = 105;
+			this.maskBar.x = 150;
+			this.maskBar.y = 50;
 			this.alphas = [1, 1];
 			this.ratios = [0, 255];
 			this.rcolor = [0xFFFFFF, 0xFFFFFF];
-			this.rectHeight = 900;
-			this.rectWidth = 500;
+			this.rectHeight = 1000;
+			this.rectWidth = 1700;
 			this.drawShapes(maskBar, alphas, ratios, rcolor, toRad(-90, -95), rectWidth, rectHeight);
 			
 			this.myBar.mask = this.maskBar;
@@ -77,7 +77,7 @@
 			
 			ExternalInterface.addCallback("UpdateData", UpdateData);
 			ExternalInterface.addCallback("GetProperties", GetProperties);
-			
+			Play();
 		}		
 		
 		private function Add(xmlStr:String, str:String, txt:TextField){
@@ -117,7 +117,7 @@
 		}
 		private function comeIn():void{
 			this.myBar.visible = true;
-			this.singleTween = new Tween(myBar, "x", Regular.easeOut, -1500, 380, 0.5, true);
+			this.singleTween = new Tween(myBar, "x", Regular.easeOut, -1500, 213, 0.5, true);
 			this.singleTween.addEventListener(TweenEvent.MOTION_FINISH, comeInTxt);
 		}
 		private function comeInTxt(e:Event):void{
@@ -129,7 +129,7 @@
 			this.txtTween.addEventListener(TweenEvent.MOTION_FINISH, comeOutBar);
 		}
 		private function comeOutBar(e:Event):void{
-			this.singleTween = new Tween(myBar, "y", Regular.easeOut, 431, 1200, 1, true);
+			this.singleTween = new Tween(myBar, "y", Regular.easeOut, 432, 1200, 1, true);
 		}
 		public override function Play():void{
 			comeIn();
