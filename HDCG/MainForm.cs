@@ -33,6 +33,8 @@ namespace HDCGStudio
 
         string videoXmlPath = "";
         string tempInfoXmlPath = "";
+        string templateXmlPath = "";
+        Dictionary<string, string> dicTemplates = new Dictionary<string, string>();
 
         EditForm frmInput = null;
 
@@ -50,6 +52,29 @@ namespace HDCGStudio
 
                 cboVideoLayer.SelectedIndex = 0;
                 cboTempLayer.SelectedIndex = 5;
+
+                templateXmlPath = Path.Combine(Application.StartupPath, "TemplateList.xml");
+                try
+                {
+                    if (File.Exists(templateXmlPath))
+                    {
+                        var lstTemplate = Utils.GetObject<List<Object.Template>>(templateXmlPath).OrderBy(a=>a.Name);
+                        foreach (var temp in lstTemplate)
+                        {
+                            dicTemplates.Add(temp.Name, temp.FileName);
+                            listBoxTemplates.Items.Add(temp.Name);
+                        }
+
+                    }
+                    else
+                    {
+                        File.Create(templateXmlPath).Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    HDMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
                 videoXmlPath = Path.Combine(Application.StartupPath, "Video.xml");
                 try
@@ -472,43 +497,7 @@ namespace HDCGStudio
                 HDMessageBox.Show("404 - Template not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public List<string> tempList = new List<string>()
-            {
-                "ffMarketOrder.ft",
-                "dLfUnofficialRacing.ft",
-                "ffDeadheat1stPagePhase2.ft",
-                "ffTickers.ft",
-                "hLfUnofficialRacing.ft",
-                "lateScratching.ft",
-                "lfParadeRing.ft",
-                "lfSingleLine.ft",
-                "lfUnofficialWinner.ft",
-                "lfWinningTrainer.ft",
-                "replay.ft",
-                "runningNumbers.ft",
-                "top8horse.ft",
-                "trackForm.ft",
-                "weather.ft",
-                "ffRunOns.ft",
-                "GenericFullFrame.ft",
-                "Protest.ft",
-                "ffDeadheat2ndPage.ft",
-                "ffDividendsPhase1.ft",
-                "ffMarketMovers.ft",
-                "ffRaceCards.ft",
-                "lfTicker.ft",
-                "ffDividendsPhase2.ft",
-                "ffDeadheat1stPagePhase1.ft",
-                "bettingCode.ft",
-                "Selection.ft",
-                "PoolsSmPhase1.ft",
-                "PoolsBigPhase2.ft",
-                "duringRace.ft",
-                "ffDividendsPhase1DeadHeat.ft",
-                "BangChoTruocTranDon.ft",
-                "BangChoTruocTranDoi.ft",
-                "BarVoDich.ft"
-            };
+
         string tempName = "";
         private void btnEditTemplate_Click(object sender, EventArgs e)
         {
@@ -544,7 +533,7 @@ namespace HDCGStudio
                         tempObj = new Object.tempInfo()
                         {
                             Layer = int.Parse(cboTempLayer.Text),
-                            TemplateName = lbSmPanel.SelectedValue.ToString(),
+                            TemplateName = listBoxTemplates.SelectedValue.ToString(),
                             Duration = int.Parse(numericUpDown1.Text),
                             Delay = int.Parse(numericUpDown2.Text),
                             Status = "Waiting"
@@ -577,116 +566,11 @@ namespace HDCGStudio
         }
         private string getTemplateName(string templateName)
         {
-            string tempFullName = "";
-            switch (templateName)
+            try
             {
-                case "FF Run Ons":
-                    tempFullName = tempList[15];
-                    break;
-                case "Generic Full Frame":
-                    tempFullName = tempList[16];
-                    break;
-                case "Protest":
-                    tempFullName = tempList[17];
-                    break;
-                case "FF Deadheat 1st Page Phase 1":
-                    tempFullName = tempList[24];
-                    break;
-                case "FF Deadheat 1st Page Phase 2":
-                    tempFullName = tempList[2];
-                    break;
-                case "FF Deadheat 2nd Page":
-                    tempFullName = tempList[18];
-                    break;
-                case "FF Dividends Phase 1":
-                    tempFullName = tempList[19];
-                    break;
-                case "FF Dividends Phase 1 Dead Heat":
-                    tempFullName = tempList[30];
-                    break;
-                case "FF Dividends Phase 2":
-                    tempFullName = tempList[23];
-                    break;
-                case "FF Market Movers":
-                    tempFullName = tempList[20];
-                    break;
-                case "FF Race Cards":
-                    tempFullName = tempList[21];
-                    break;
-                case "FF Market Order":
-                    tempFullName = tempList[0];
-                    break;
-                case "FF Tickers (Big Panel)":
-                    tempFullName = tempList[3];
-                    break;
-                case "Weather":
-                    tempFullName = tempList[14];
-                    break;
-                case "Replay":
-                    tempFullName = tempList[10];
-                    break;
-                case "LF Single Line":
-                    tempFullName = tempList[7];
-                    break;
-                case "LF Winning Trainer":
-                    tempFullName = tempList[9];
-                    break;
-                case "LF Unofficial Winner":
-                    tempFullName = tempList[8];
-                    break;
-                case "H-LF Unofficial Racing":
-                    tempFullName = tempList[4];
-                    break;
-                case "D-LF Unofficial Racing":
-                    tempFullName = tempList[1];
-                    break;
-                case "Running Numbers":
-                    tempFullName = tempList[11];
-                    break;
-                case "Trackform":
-                    tempFullName = tempList[13];
-                    break;
-                case "Late Scratching":
-                    tempFullName = tempList[5];
-                    break;
-                case "Top 8 Left":
-                    tempFullName = tempList[12];
-                    break;
-                case "LF Ticker (Small Panel)":
-                    tempFullName = tempList[22];
-                    break;
-                case "LF Parade Ring":
-                    tempFullName = tempList[6];
-                    break;
-                case "Betting Code":
-                    tempFullName = tempList[25];
-                    break;
-                case "Selection":
-                    tempFullName = tempList[26];
-                    break;
-                case "Pools Small - Phase 1":
-                    tempFullName = tempList[27];
-                    break;
-                case "Pools Big - Phase 2":
-                    tempFullName = tempList[28];
-                    break;
-                case "During Race":
-                    tempFullName = tempList[29];
-                    break;
-                case "Bảng chờ trước trận đơn":
-                    tempFullName = tempList[31];
-                    break;
-                case "Bảng chờ trước trận đôi":
-                    tempFullName = tempList[32];
-                    break;
-                case "Bar vô địch":
-                    tempFullName = tempList[33];
-                    break;
-                default:
-                    tempFullName = tempList[0];
-                    break;
+                return dicTemplates[templateName];
             }
-            return tempFullName;
+            catch { return ""; }
         }
         private void gvTempInfo_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
@@ -908,7 +792,9 @@ namespace HDCGStudio
 
         private void barBtnManageTemplate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            ManageTemplateForm mTemp = new ManageTemplateForm();
+            mTemp.Show();
+            mTemp.Activate();
         }
     }
 }

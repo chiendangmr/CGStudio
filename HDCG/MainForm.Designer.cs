@@ -35,6 +35,7 @@
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.cboFormat = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.barBtnManageTemplate = new DevExpress.XtraBars.BarButtonItem();
             this.mnuHelp = new DevExpress.XtraBars.BarSubItem();
             this.mnuAbout = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -69,7 +70,7 @@
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.lbSmPanel = new DevExpress.XtraEditors.ListBoxControl();
+            this.listBoxTemplates = new DevExpress.XtraEditors.ListBoxControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gridTempInfo = new DevExpress.XtraGrid.GridControl();
             this.tempInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -97,7 +98,6 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.barBtnManageTemplate = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -116,7 +116,7 @@
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lbSmPanel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxTemplates)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTempInfo)).BeginInit();
@@ -167,8 +167,8 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.cboFormat, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mnuHelp),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barBtnManageTemplate)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barBtnManageTemplate),
+            new DevExpress.XtraBars.LinkPersistInfo(this.mnuHelp)});
             this.bar2.OptionsBar.DisableClose = true;
             this.bar2.OptionsBar.DisableCustomization = true;
             this.bar2.OptionsBar.DrawBorder = false;
@@ -200,6 +200,13 @@
             "HD1080i50"});
             this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
             this.repositoryItemComboBox1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // barBtnManageTemplate
+            // 
+            this.barBtnManageTemplate.Caption = "Quản lý templates";
+            this.barBtnManageTemplate.Id = 10;
+            this.barBtnManageTemplate.Name = "barBtnManageTemplate";
+            this.barBtnManageTemplate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnManageTemplate_ItemClick);
             // 
             // mnuHelp
             // 
@@ -610,47 +617,22 @@
             // 
             this.panelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panelControl2.Controls.Add(this.lbSmPanel);
+            this.panelControl2.Controls.Add(this.listBoxTemplates);
             this.panelControl2.Location = new System.Drawing.Point(12, 99);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(424, 290);
             this.panelControl2.TabIndex = 84;
             // 
-            // lbSmPanel
+            // listBoxTemplates
             // 
-            this.lbSmPanel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lbSmPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbSmPanel.Items.AddRange(new object[] {
-            "Bảng chờ trước trận đơn",
-            "Bảng chờ trước trận đôi",
-            "Bar vô địch",
-            "LF Single Line",
-            "LF Winning Trainer",
-            "LF Unofficial Winner",
-            "LF Ticker (Small Panel)",
-            "D-LF Unofficial Racing",
-            "Betting Code",
-            "Selection",
-            "Pools Small - Phase 1",
-            "Replay",
-            "During Race",
-            "Trackform",
-            "Late Scratching",
-            "Top 8 Left",
-            "Generic Full Frame",
-            "FF Dividends Phase 1",
-            "FF Dividends Phase 1 Dead Heat",
-            "FF Market Movers",
-            "FF Race Cards",
-            "FF Market Order",
-            "FF Tickers (Big Panel)",
-            "Weather"});
-            this.lbSmPanel.Location = new System.Drawing.Point(2, 2);
-            this.lbSmPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lbSmPanel.MultiColumn = true;
-            this.lbSmPanel.Name = "lbSmPanel";
-            this.lbSmPanel.Size = new System.Drawing.Size(420, 286);
-            this.lbSmPanel.TabIndex = 69;
+            this.listBoxTemplates.Cursor = System.Windows.Forms.Cursors.Default;
+            this.listBoxTemplates.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxTemplates.Location = new System.Drawing.Point(2, 2);
+            this.listBoxTemplates.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listBoxTemplates.MultiColumn = true;
+            this.listBoxTemplates.Name = "listBoxTemplates";
+            this.listBoxTemplates.Size = new System.Drawing.Size(420, 286);
+            this.listBoxTemplates.TabIndex = 69;
             // 
             // panelControl1
             // 
@@ -1036,13 +1018,6 @@
             this.splitContainerControl1.TabIndex = 20;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
-            // barBtnManageTemplate
-            // 
-            this.barBtnManageTemplate.Caption = "Quản lý templates";
-            this.barBtnManageTemplate.Id = 10;
-            this.barBtnManageTemplate.Name = "barBtnManageTemplate";
-            this.barBtnManageTemplate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnManageTemplate_ItemClick);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1081,7 +1056,7 @@
             this.groupControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lbSmPanel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxTemplates)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridTempInfo)).EndInit();
@@ -1146,7 +1121,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.SimpleButton btnRemoveTemplate;
         private DevExpress.XtraEditors.SimpleButton btnAddTemplate;
-        private DevExpress.XtraEditors.ListBoxControl lbSmPanel;
+        private DevExpress.XtraEditors.ListBoxControl listBoxTemplates;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.GridControl gridTempInfo;
         private DevExpress.XtraGrid.Views.Grid.GridView gvTempInfo;
