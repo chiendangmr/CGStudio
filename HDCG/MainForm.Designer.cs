@@ -97,6 +97,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.barBtnManageTemplate = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -148,9 +149,10 @@
             this.lbCGServerStatus,
             this.barStaticItem1,
             this.cboFormat,
-            this.barSubItem1});
+            this.barSubItem1,
+            this.barBtnManageTemplate});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 10;
+            this.barManager1.MaxItemId = 11;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1,
             this.repositoryItemComboBox1});
@@ -165,7 +167,8 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.cboFormat, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.mnuHelp)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.mnuHelp),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barBtnManageTemplate)});
             this.bar2.OptionsBar.DisableClose = true;
             this.bar2.OptionsBar.DisableCustomization = true;
             this.bar2.OptionsBar.DrawBorder = false;
@@ -250,7 +253,7 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlTop.Size = new System.Drawing.Size(1262, 25);
+            this.barDockControlTop.Size = new System.Drawing.Size(1262, 26);
             // 
             // barDockControlBottom
             // 
@@ -265,19 +268,19 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 25);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 26);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 614);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 613);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1262, 25);
+            this.barDockControlRight.Location = new System.Drawing.Point(1262, 26);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 614);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 613);
             // 
             // barButtonItem1
             // 
@@ -599,7 +602,7 @@
             this.groupControl3.Location = new System.Drawing.Point(0, 0);
             this.groupControl3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(1262, 399);
+            this.groupControl3.Size = new System.Drawing.Size(1262, 398);
             this.groupControl3.TabIndex = 15;
             this.groupControl3.Text = "Templates";
             // 
@@ -610,7 +613,7 @@
             this.panelControl2.Controls.Add(this.lbSmPanel);
             this.panelControl2.Location = new System.Drawing.Point(12, 99);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(424, 291);
+            this.panelControl2.Size = new System.Drawing.Size(424, 290);
             this.panelControl2.TabIndex = 84;
             // 
             // lbSmPanel
@@ -620,6 +623,7 @@
             this.lbSmPanel.Items.AddRange(new object[] {
             "Bảng chờ trước trận đơn",
             "Bảng chờ trước trận đôi",
+            "Bar vô địch",
             "LF Single Line",
             "LF Winning Trainer",
             "LF Unofficial Winner",
@@ -645,7 +649,7 @@
             this.lbSmPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lbSmPanel.MultiColumn = true;
             this.lbSmPanel.Name = "lbSmPanel";
-            this.lbSmPanel.Size = new System.Drawing.Size(420, 287);
+            this.lbSmPanel.Size = new System.Drawing.Size(420, 286);
             this.lbSmPanel.TabIndex = 69;
             // 
             // panelControl1
@@ -656,7 +660,7 @@
             this.panelControl1.Controls.Add(this.gridTempInfo);
             this.panelControl1.Location = new System.Drawing.Point(520, 97);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(726, 295);
+            this.panelControl1.Size = new System.Drawing.Size(726, 294);
             this.panelControl1.TabIndex = 83;
             // 
             // gridTempInfo
@@ -672,7 +676,7 @@
             this.gridTempInfo.Name = "gridTempInfo";
             this.gridTempInfo.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit2});
-            this.gridTempInfo.Size = new System.Drawing.Size(722, 291);
+            this.gridTempInfo.Size = new System.Drawing.Size(722, 290);
             this.gridTempInfo.TabIndex = 19;
             this.gridTempInfo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvTempInfo});
@@ -1021,16 +1025,23 @@
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.Horizontal = false;
-            this.splitContainerControl1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 26);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.groupControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.groupControl3);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1262, 614);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1262, 613);
             this.splitContainerControl1.SplitterPosition = 209;
             this.splitContainerControl1.TabIndex = 20;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // barBtnManageTemplate
+            // 
+            this.barBtnManageTemplate.Caption = "Quản lý templates";
+            this.barBtnManageTemplate.Id = 10;
+            this.barBtnManageTemplate.Name = "barBtnManageTemplate";
+            this.barBtnManageTemplate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnManageTemplate_ItemClick);
             // 
             // MainForm
             // 
@@ -1157,5 +1168,6 @@
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraBars.BarButtonItem barBtnManageTemplate;
     }
 }

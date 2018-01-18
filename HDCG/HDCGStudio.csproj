@@ -80,6 +80,12 @@
     <Compile Include="EditForm.Designer.cs">
       <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManageTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageTemplateForm.Designer.cs">
+      <DependentUpon>ManageTemplateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Object\MeetingsInfo.cs" />
     <Compile Include="Object\tempUpdating.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageTemplateForm.resx">
+      <DependentUpon>ManageTemplateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -32,7 +32,7 @@ namespace HDCGStudio
         }
 
         string videoXmlPath = "";
-        string tempInfoXmlPath = "";        
+        string tempInfoXmlPath = "";
 
         EditForm frmInput = null;
 
@@ -300,24 +300,13 @@ namespace HDCGStudio
                 var tempInfoView = gvTempInfo.GetFocusedRow() as View.tempInfo;
                 isPlaying = true;
                 if (isUpdated)
-                    if (templateFileName == "GenericFullFrame.ft")
+
+                    if (frmInput.getXml() != null)
                     {
-                        if (frmInput.getXml() != null)
-                        {
-                            upOK = cgServer.FadeUp(layer, fadeUpDuration, frmInput.getXml());
-                        }
-                        else
-                            upOK = cgServer.CutUp(layer);
-                    }
-                    else if (cbAutoMode.Checked)
-                    {
-                        upOK = cgServer.CutUp(layer);
+                        upOK = cgServer.FadeUp(layer, fadeUpDuration, frmInput.getXml());
                     }
                     else
-                    {
                         upOK = cgServer.CutUp(layer);
-
-                    }
 
                 System.Threading.Timer timer = null;
                 if (tempInfoView.tempObj.Duration > 0)
@@ -327,7 +316,7 @@ namespace HDCGStudio
                         OffTemplate(tempInfoView.tempObj.Layer);
                         timer.Dispose();
                     },
-                null, tempInfoView.tempObj.Delay + tempInfoView.tempObj.Duration, System.Threading.Timeout.Infinite);
+                null, tempInfoView.tempObj.Delay + tempInfoView.tempObj.Duration, Timeout.Infinite);
 
                 }
             }
@@ -517,7 +506,8 @@ namespace HDCGStudio
                 "duringRace.ft",
                 "ffDividendsPhase1DeadHeat.ft",
                 "BangChoTruocTranDon.ft",
-                "BangChoTruocTranDoi.ft"
+                "BangChoTruocTranDoi.ft",
+                "BarVoDich.ft"
             };
         string tempName = "";
         private void btnEditTemplate_Click(object sender, EventArgs e)
@@ -689,6 +679,9 @@ namespace HDCGStudio
                 case "Bảng chờ trước trận đôi":
                     tempFullName = tempList[32];
                     break;
+                case "Bar vô địch":
+                    tempFullName = tempList[33];
+                    break;
                 default:
                     tempFullName = tempList[0];
                     break;
@@ -785,7 +778,7 @@ namespace HDCGStudio
             tempInfoView.tempObj.Status = status;
             gvTempInfo.RefreshData();
         }
-        
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             try
@@ -911,6 +904,11 @@ namespace HDCGStudio
             writer.Close();
 
             return Result;
+        }
+
+        private void barBtnManageTemplate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }
