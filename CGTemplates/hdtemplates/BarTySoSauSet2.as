@@ -24,7 +24,7 @@
 	import flash.globalization.NumberFormatter;
 	import flash.globalization.LocaleID;
 		
-	public class BarTySoSauSet1 extends CasparTemplate{
+	public class BarTySoSauSet2 extends CasparTemplate{
 		
 		public var myBar:MovieClip = new bar();
 				
@@ -40,6 +40,8 @@
 		public var title7:TextField = new TextField();
 		public var title8:TextField = new TextField();
 		public var title9:TextField = new TextField();
+		public var title10:TextField = new TextField();
+		public var title11:TextField = new TextField();
 		public var player1:TextField = new TextField();		
 		public var player2:TextField = new TextField();
 							
@@ -53,7 +55,7 @@
 		private var singleTween:Tween = null;
 		private var txtTween:Tween = null;
 				
-		public function BarTySoSauSet1() {
+		public function BarTySoSauSet2() {
 			// constructor code
 			super();
 			
@@ -68,6 +70,8 @@
 			this.txtGroup.addChild(title7);
 			this.txtGroup.addChild(title8);
 			this.txtGroup.addChild(title9);
+			this.txtGroup.addChild(title10);
+			this.txtGroup.addChild(title11);
 			this.txtGroup.addChild(player1);		
 			this.txtGroup.addChild(player2);							
 			
@@ -108,6 +112,8 @@
 			xmlStr +=Add(xmlStr, "title7", title7);
 			xmlStr +=Add(xmlStr, "title8", title8);
 			xmlStr +=Add(xmlStr, "title9", title9);
+			xmlStr +=Add(xmlStr, "title10", title10);
+			xmlStr +=Add(xmlStr, "title11", title11);
 			xmlStr +=Add(xmlStr, "player1", player1);	
 			xmlStr +=Add(xmlStr, "player2", player2);
 			xmlStr += "</Track_Property>";
@@ -157,6 +163,12 @@
 						break;
 					case "title9".toLowerCase():
 						this.title9.text = data.toUpperCase();
+						break;
+					case "title10".toLowerCase():
+						this.title10.text = data.toUpperCase();
+						break;
+					case "title11".toLowerCase():
+						this.title11.text = data.toUpperCase();
 						break;
 					case "player1".toLowerCase():
 						this.player1.text = data.toUpperCase();
