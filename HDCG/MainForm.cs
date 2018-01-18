@@ -117,9 +117,9 @@ namespace HDCGStudio
                     gvTempInfo.RefreshData();
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                HDMessageBox.Show("Error!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                HDMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
