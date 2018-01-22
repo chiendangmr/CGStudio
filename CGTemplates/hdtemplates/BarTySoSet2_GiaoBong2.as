@@ -24,9 +24,9 @@
 	import flash.globalization.NumberFormatter;
 	import flash.globalization.LocaleID;
 		
-	public class BarTySoSet1 extends CasparTemplate{
+	public class BarTySoSet2_GiaoBong2 extends CasparTemplate{
 		
-		public var myBar:MovieClip = new bar();
+		public var myTotalBar:MovieClip = new totalBar();
 				
 		private var txtGroup:MovieClip = new MovieClip();
 					
@@ -34,6 +34,8 @@
 		public var title2:TextField = new TextField();
 		public var title3:TextField = new TextField();
 		public var title4:TextField = new TextField();
+		public var title5:TextField = new TextField();
+		public var title6:TextField = new TextField();
 		public var player1:TextField = new TextField();		
 		public var player2:TextField = new TextField();
 							
@@ -47,15 +49,17 @@
 		private var singleTween:Tween = null;
 		private var txtTween:Tween = null;
 				
-		public function BarTySoSet1() {
+		public function BarTySoSet2_GiaoBong2() {
 			// constructor code
 			super();
 			
-			this.addChild(myBar);
+			this.addChild(myTotalBar);
 			this.txtGroup.addChild(title1);	
 			this.txtGroup.addChild(title2);
 			this.txtGroup.addChild(title3);
 			this.txtGroup.addChild(title4);
+			this.txtGroup.addChild(title5);
+			this.txtGroup.addChild(title6);
 			this.txtGroup.addChild(player1);		
 			this.txtGroup.addChild(player2);							
 			
@@ -71,9 +75,9 @@
 			this.rectWidth = 1700;
 			this.drawShapes(maskBar, alphas, ratios, rcolor, toRad(-90, -95), rectWidth, rectHeight);
 			
-			this.myBar.mask = this.maskBar;
+			this.myTotalBar.mask = this.maskBar;
 			this.txtGroup.visible = false;
-			this.myBar.visible = false;			
+			this.myTotalBar.visible = false;			
 			
 			ExternalInterface.addCallback("UpdateData", UpdateData);
 			ExternalInterface.addCallback("GetProperties", GetProperties);			
@@ -90,6 +94,8 @@
 			xmlStr +=Add(xmlStr, "title2", title2);
 			xmlStr +=Add(xmlStr, "title3", title3);
 			xmlStr +=Add(xmlStr, "title4", title4);
+			xmlStr +=Add(xmlStr, "title5", title5);
+			xmlStr +=Add(xmlStr, "title6", title6);
 			xmlStr +=Add(xmlStr, "player1", player1);	
 			xmlStr +=Add(xmlStr, "player2", player2);
 			xmlStr += "</Track_Property>";
@@ -122,6 +128,12 @@
 					case "title4".toLowerCase():
 						this.title4.text = data.toUpperCase();
 						break;
+					case "title5".toLowerCase():
+						this.title5.text = data.toUpperCase();
+						break;
+					case "title6".toLowerCase():
+						this.title6.text = data.toUpperCase();
+						break;
 					case "player1".toLowerCase():
 						this.player1.text = data.toUpperCase();
 						break;
@@ -132,8 +144,8 @@
 			}
 		}
 		private function comeIn():void{
-			this.myBar.visible = true;
-			this.singleTween = new Tween(myBar, "x", Regular.easeOut, -1500, 213, 0.5, true);
+			this.myTotalBar.visible = true;
+			this.singleTween = new Tween(myTotalBar, "x", Regular.easeOut, -1500, 960, 0.5, true);
 			this.singleTween.addEventListener(TweenEvent.MOTION_FINISH, comeInTxt);
 		}
 		private function comeInTxt(e:Event):void{
@@ -145,7 +157,7 @@
 			this.txtTween.addEventListener(TweenEvent.MOTION_FINISH, comeOutBar);
 		}
 		private function comeOutBar(e:Event):void{
-			this.singleTween = new Tween(myBar, "y", Regular.easeOut, 432, 1200, 1, true);
+			this.singleTween = new Tween(myTotalBar, "y", Regular.easeOut, 540, 1200, 1, true);
 		}
 		public override function Play():void{
 			comeIn();

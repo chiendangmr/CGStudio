@@ -24,9 +24,9 @@
 	import flash.globalization.NumberFormatter;
 	import flash.globalization.LocaleID;
 		
-	public class BarTySoSet2 extends CasparTemplate{
+	public class BarTySoSet2_GiaoBong1 extends CasparTemplate{
 		
-		public var myBar:MovieClip = new bar();
+		public var myTotalBar:MovieClip = new totalBar();
 				
 		private var txtGroup:MovieClip = new MovieClip();
 					
@@ -49,11 +49,11 @@
 		private var singleTween:Tween = null;
 		private var txtTween:Tween = null;
 				
-		public function BarTySoSet2() {
+		public function BarTySoSet2_GiaoBong1() {
 			// constructor code
 			super();
 			
-			this.addChild(myBar);
+			this.addChild(myTotalBar);
 			this.txtGroup.addChild(title1);	
 			this.txtGroup.addChild(title2);
 			this.txtGroup.addChild(title3);
@@ -75,9 +75,9 @@
 			this.rectWidth = 1700;
 			this.drawShapes(maskBar, alphas, ratios, rcolor, toRad(-90, -95), rectWidth, rectHeight);
 			
-			this.myBar.mask = this.maskBar;
+			this.myTotalBar.mask = this.maskBar;
 			this.txtGroup.visible = false;
-			this.myBar.visible = false;			
+			this.myTotalBar.visible = false;			
 			
 			ExternalInterface.addCallback("UpdateData", UpdateData);
 			ExternalInterface.addCallback("GetProperties", GetProperties);			
@@ -144,8 +144,8 @@
 			}
 		}
 		private function comeIn():void{
-			this.myBar.visible = true;
-			this.singleTween = new Tween(myBar, "x", Regular.easeOut, -1500, 213, 0.5, true);
+			this.myTotalBar.visible = true;
+			this.singleTween = new Tween(myTotalBar, "x", Regular.easeOut, -1500, 960, 0.5, true);
 			this.singleTween.addEventListener(TweenEvent.MOTION_FINISH, comeInTxt);
 		}
 		private function comeInTxt(e:Event):void{
@@ -157,7 +157,7 @@
 			this.txtTween.addEventListener(TweenEvent.MOTION_FINISH, comeOutBar);
 		}
 		private function comeOutBar(e:Event):void{
-			this.singleTween = new Tween(myBar, "y", Regular.easeOut, 432, 1200, 1, true);
+			this.singleTween = new Tween(myTotalBar, "y", Regular.easeOut, 540, 1200, 1, true);
 		}
 		public override function Play():void{
 			comeIn();
