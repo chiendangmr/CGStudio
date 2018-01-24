@@ -796,5 +796,10 @@ namespace HDCGStudio
             mTemp.Show();
             mTemp.Activate();
         }
+
+        private void cboTemplateType_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
