@@ -69,6 +69,7 @@
             this.cboVideoLayer = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.cboTemplateType = new DevExpress.XtraEditors.ComboBoxEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.listBoxTemplates = new DevExpress.XtraEditors.ListBoxControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -98,7 +99,6 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.cboTemplateType = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -115,6 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboVideoLayer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboTemplateType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxTemplates)).BeginInit();
@@ -130,7 +131,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboTempLayer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboTemplateType.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -616,6 +616,22 @@
             this.groupControl3.TabIndex = 15;
             this.groupControl3.Text = "Templates";
             // 
+            // cboTemplateType
+            // 
+            this.cboTemplateType.Location = new System.Drawing.Point(116, 67);
+            this.cboTemplateType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cboTemplateType.MenuManager = this.barManager1;
+            this.cboTemplateType.Name = "cboTemplateType";
+            this.cboTemplateType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboTemplateType.Properties.Items.AddRange(new object[] {
+            "Bóng đá",
+            "Tennis"});
+            this.cboTemplateType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cboTemplateType.Size = new System.Drawing.Size(97, 22);
+            this.cboTemplateType.TabIndex = 85;
+            this.cboTemplateType.SelectedValueChanged += new System.EventHandler(this.cboTemplateType_SelectedValueChanged);
+            // 
             // panelControl2
             // 
             this.panelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -868,9 +884,9 @@
             this.labelControl1.Location = new System.Drawing.Point(12, 69);
             this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(76, 17);
+            this.labelControl1.Size = new System.Drawing.Size(98, 17);
             this.labelControl1.TabIndex = 74;
-            this.labelControl1.Text = "Templates:";
+            this.labelControl1.Text = "Loại template:";
             // 
             // btnRemoveTemplate
             // 
@@ -957,7 +973,7 @@
             // 
             // cboTempLayer
             // 
-            this.cboTempLayer.Location = new System.Drawing.Point(94, 34);
+            this.cboTempLayer.Location = new System.Drawing.Point(116, 34);
             this.cboTempLayer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cboTempLayer.MenuManager = this.barManager1;
             this.cboTempLayer.Name = "cboTempLayer";
@@ -993,7 +1009,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(14, 34);
+            this.labelControl2.Location = new System.Drawing.Point(67, 34);
             this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(43, 17);
@@ -1020,22 +1036,6 @@
             this.splitContainerControl1.SplitterPosition = 209;
             this.splitContainerControl1.TabIndex = 20;
             this.splitContainerControl1.Text = "splitContainerControl1";
-            // 
-            // cboTemplateType
-            // 
-            this.cboTemplateType.Location = new System.Drawing.Point(94, 67);
-            this.cboTemplateType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cboTemplateType.MenuManager = this.barManager1;
-            this.cboTemplateType.Name = "cboTemplateType";
-            this.cboTemplateType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboTemplateType.Properties.Items.AddRange(new object[] {
-            "Bóng đá",
-            "Tennis"});
-            this.cboTemplateType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboTemplateType.Size = new System.Drawing.Size(97, 22);
-            this.cboTemplateType.TabIndex = 85;
-            this.cboTemplateType.SelectedValueChanged += new System.EventHandler(this.cboTemplateType_SelectedValueChanged);
             // 
             // MainForm
             // 
@@ -1073,6 +1073,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboTemplateType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listBoxTemplates)).EndInit();
@@ -1088,7 +1089,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboTempLayer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cboTemplateType.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

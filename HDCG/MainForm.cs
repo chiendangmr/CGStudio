@@ -31,9 +31,9 @@ namespace HDCGStudio
             frm.ShowDialog();
         }
 
-        string videoXmlPath = "";
-        string tempInfoXmlPath = "";
-        string templateXmlPath = "";
+        string _videoXmlPath = "";
+        string _tempInfoXmlPath = "";
+        string _templateXmlPath = "";
         Dictionary<string, string> dicTemplates = new Dictionary<string, string>();
 
         EditForm frmInput = null;
@@ -52,13 +52,21 @@ namespace HDCGStudio
 
                 cboVideoLayer.SelectedIndex = 0;
                 cboTempLayer.SelectedIndex = 5;
+                cboTemplateType.SelectedIndex = 0;
 
-                templateXmlPath = Path.Combine(Application.StartupPath, "TemplateList.xml");
+                if (cboTemplateType.Text == "Bóng đá")
+                {
+                    _templateXmlPath = Path.Combine(Application.StartupPath, "BongDaTemplateList.xml");
+                }
+                else
+                    _templateXmlPath = Path.Combine(Application.StartupPath, "TemplateList.xml");
+
+
                 try
                 {
-                    if (File.Exists(templateXmlPath))
+                    if (File.Exists(_templateXmlPath))
                     {
-                        var lstTemplate = Utils.GetObject<List<Object.Template>>(templateXmlPath).OrderBy(a=>a.Name);
+                        var lstTemplate = Utils.GetObject<List<Object.Template>>(_templateXmlPath).OrderBy(a => a.Name);
                         foreach (var temp in lstTemplate)
                         {
                             dicTemplates.Add(temp.Name, temp.FileName);
@@ -68,7 +76,7 @@ namespace HDCGStudio
                     }
                     else
                     {
-                        File.Create(templateXmlPath).Dispose();
+                        File.Create(_templateXmlPath).Dispose();
                     }
                 }
                 catch (Exception ex)
@@ -76,12 +84,12 @@ namespace HDCGStudio
                     HDMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                videoXmlPath = Path.Combine(Application.StartupPath, "Video.xml");
+                _videoXmlPath = Path.Combine(Application.StartupPath, "Video.xml");
                 try
                 {
-                    if (File.Exists(videoXmlPath))
+                    if (File.Exists(_videoXmlPath))
                     {
-                        var lstVideo = Utils.GetObject<List<Object.Video>>(videoXmlPath);
+                        var lstVideo = Utils.GetObject<List<Object.Video>>(_videoXmlPath);
                         foreach (var video in lstVideo)
                             videoBindingSource.Add(new View.Video()
                             {
@@ -91,12 +99,12 @@ namespace HDCGStudio
                 }
                 catch { }
 
-                tempInfoXmlPath = Path.Combine(Application.StartupPath, "tempInfo.xml");
+                _tempInfoXmlPath = Path.Combine(Application.StartupPath, "tempInfo.xml");
                 try
                 {
-                    if (File.Exists(tempInfoXmlPath))
+                    if (File.Exists(_tempInfoXmlPath))
                     {
-                        var lstBarMC = Utils.GetObject<List<Object.tempInfo>>(tempInfoXmlPath);
+                        var lstBarMC = Utils.GetObject<List<Object.tempInfo>>(_tempInfoXmlPath);
                         foreach (var barMC in lstBarMC)
                             tempInfoBindingSource.List.Add(new View.tempInfo()
                             {
@@ -117,7 +125,7 @@ namespace HDCGStudio
                     gvTempInfo.RefreshData();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 HDMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -180,7 +188,7 @@ namespace HDCGStudio
                     }
                 });
 
-                (videoBindingSource.List as BindingList<View.Video>).Select(v => v.VideoObj).ToList().SaveObject(videoXmlPath);
+                (videoBindingSource.List as BindingList<View.Video>).Select(v => v.VideoObj).ToList().SaveObject(_videoXmlPath);
             }
         }
 
@@ -192,7 +200,7 @@ namespace HDCGStudio
             {
                 videoBindingSource.List.Remove(gvVideo.GetFocusedRow());
 
-                (videoBindingSource.List as BindingList<View.Video>).Select(v => v.VideoObj).ToList().SaveObject(videoXmlPath);
+                (videoBindingSource.List as BindingList<View.Video>).Select(v => v.VideoObj).ToList().SaveObject(_videoXmlPath);
             }
         }
 
@@ -214,7 +222,7 @@ namespace HDCGStudio
 
                 grdVideo.RefreshDataSource();
 
-                (videoBindingSource.List as BindingList<View.Video>).Select(v => v.VideoObj).ToList().SaveObject(videoXmlPath);
+                (videoBindingSource.List as BindingList<View.Video>).Select(v => v.VideoObj).ToList().SaveObject(_videoXmlPath);
             }
         }
 
@@ -541,7 +549,7 @@ namespace HDCGStudio
                         }
                     });
 
-                    (tempInfoBindingSource.List as BindingList<View.tempInfo>).Select(v => v.tempObj).ToList().SaveObject(tempInfoXmlPath);
+                    (tempInfoBindingSource.List as BindingList<View.tempInfo>).Select(v => v.tempObj).ToList().SaveObject(_tempInfoXmlPath);
                 }
             }
             catch
@@ -559,7 +567,7 @@ namespace HDCGStudio
                 {
                     tempInfoBindingSource.List.Remove(gvTempInfo.GetFocusedRow());
 
-                    (tempInfoBindingSource.List as BindingList<View.tempInfo>).Select(v => v.tempObj).ToList().SaveObject(tempInfoXmlPath);
+                    (tempInfoBindingSource.List as BindingList<View.tempInfo>).Select(v => v.tempObj).ToList().SaveObject(_tempInfoXmlPath);
                 }
             }
             catch { }
@@ -792,13 +800,43 @@ namespace HDCGStudio
 
         private void barBtnManageTemplate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ManageTemplateForm mTemp = new ManageTemplateForm();
+            ManageTemplateForm mTemp = new ManageTemplateForm(cboTemplateType.Text);
             mTemp.Show();
             mTemp.Activate();
         }
 
         private void cboTemplateType_SelectedValueChanged(object sender, EventArgs e)
         {
+            dicTemplates.Clear();
+            listBoxTemplates.Items.Clear();
+            if (cboTemplateType.Text == "Bóng đá")
+            {
+                _templateXmlPath = Path.Combine(Application.StartupPath, "BongDaTemplateList.xml");
+            }
+            else
+                _templateXmlPath = Path.Combine(Application.StartupPath, "TemplateList.xml");
+
+            try
+            {
+                if (File.Exists(_templateXmlPath))
+                {
+                    var lstTemplate = Utils.GetObject<List<Object.Template>>(_templateXmlPath).OrderBy(a => a.Name);
+                    foreach (var temp in lstTemplate)
+                    {
+                        dicTemplates.Add(temp.Name, temp.FileName);
+                        listBoxTemplates.Items.Add(temp.Name);
+                    }
+
+                }
+                else
+                {
+                    File.Create(_templateXmlPath).Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                HDMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }

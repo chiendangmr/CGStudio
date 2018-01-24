@@ -15,14 +15,21 @@ namespace HDCGStudio
 {
     public partial class ManageTemplateForm : Form
     {
-        public ManageTemplateForm()
+        string _templateType = "";
+        public ManageTemplateForm(string templateType)
         {
             InitializeComponent();
+            _templateType = templateType;
         }
         string templatesXmlPath = "";
         private void ManageTemplateForm_Shown(object sender, EventArgs e)
         {
-            templatesXmlPath = Path.Combine(Application.StartupPath, "TemplateList.xml");
+            if (_templateType == "Bóng đá")
+            {
+                templatesXmlPath = Path.Combine(Application.StartupPath, "BongdaTemplateList.xml");
+            }
+            else
+                templatesXmlPath = Path.Combine(Application.StartupPath, "TemplateList.xml");
             try
             {
                 if (File.Exists(templatesXmlPath))
@@ -81,22 +88,23 @@ namespace HDCGStudio
                 else
                 {
                     var temp = gridView1.GetFocusedRow() as View.Template;
-                    if (HDMessageBox.Show("Bạn chắc chắn xóa "+ temp.TempObj.Name) == DialogResult.OK)
+                    if (HDMessageBox.Show("Bạn chắc chắn xóa " + temp.TempObj.Name) == DialogResult.OK)
                     {
                         bsManageTemplate.List.Remove(gridView1.GetFocusedRow());
 
                         (bsManageTemplate.List as BindingList<View.Template>).Select(v => v.TempObj).ToList().SaveObject(templatesXmlPath);
-                    }                    
+                    }
                 }
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 HDMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void ManageTemplateForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            HDMessageBox.Show("Bạn phải khởi động lại phần mềm để lấy được danh sách templates mới!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            HDMessageBox.Show("Bạn phải load lại danh sách template để lấy được các templates mới!", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }
