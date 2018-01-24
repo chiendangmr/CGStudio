@@ -141,7 +141,7 @@ namespace CGPreviewControl
         }
 
         [Obsolete("use ICGDataContainer for CGData instead", false)]
-        public bool Add(Svt.Caspar.CasparCGItem item, int layer)
+        public bool Add(CasparCGItem item, int layer)
         {
             if (item != null)
             {
@@ -192,9 +192,9 @@ namespace CGPreviewControl
             if (Path.GetExtension(template).ToLower() != ".ft")
                 template += ".ft";
 
-            string fullFilename = System.IO.Path.GetFullPath(System.IO.Path.Combine(TemplateFolder, template));
+            string fullFilename = Path.GetFullPath(Path.Combine(TemplateFolder, template));
 
-            if (System.IO.File.Exists(fullFilename))
+            if (File.Exists(fullFilename))
             {
                 string addRequest = AddRequestTemplate20;
                 StringBuilder request = new StringBuilder(addRequest, data.Length + addRequest.Length);
@@ -265,11 +265,11 @@ namespace CGPreviewControl
         }
 
         [Obsolete("use ICGDataContainer for CGData instead", false)]
-        public void Update(Svt.Caspar.CasparCGItem item)
+        public void Update(CasparCGItem item)
         {
             if (item != null)
             {
-                string dataxml = Svt.Caspar.CGDataPair.ToXml(item.Data);
+                string dataxml = CGDataPair.ToXml(item.Data);
                 string updateRequest = UpdateRequestTemplate20;
                 StringBuilder request = new StringBuilder(updateRequest, dataxml.Length + updateRequest.Length);
                 request.Replace("$LAYER$", item.Layer.ToString());

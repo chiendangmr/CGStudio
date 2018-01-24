@@ -52,37 +52,7 @@ namespace HDCGStudio
 
                 cboVideoLayer.SelectedIndex = 0;
                 cboTempLayer.SelectedIndex = 5;
-                cboTemplateType.SelectedIndex = 0;
-
-                if (cboTemplateType.Text == "Bóng đá")
-                {
-                    _templateXmlPath = Path.Combine(Application.StartupPath, "BongDaTemplateList.xml");
-                }
-                else
-                    _templateXmlPath = Path.Combine(Application.StartupPath, "TemplateList.xml");
-
-
-                try
-                {
-                    if (File.Exists(_templateXmlPath))
-                    {
-                        var lstTemplate = Utils.GetObject<List<Object.Template>>(_templateXmlPath).OrderBy(a => a.Name);
-                        foreach (var temp in lstTemplate)
-                        {
-                            dicTemplates.Add(temp.Name, temp.FileName);
-                            listBoxTemplates.Items.Add(temp.Name);
-                        }
-
-                    }
-                    else
-                    {
-                        File.Create(_templateXmlPath).Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    HDMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                cboTemplateType.SelectedIndex = 0;                
 
                 _videoXmlPath = Path.Combine(Application.StartupPath, "Video.xml");
                 try
@@ -94,21 +64,6 @@ namespace HDCGStudio
                             videoBindingSource.Add(new View.Video()
                             {
                                 VideoObj = video
-                            });
-                    }
-                }
-                catch { }
-
-                _tempInfoXmlPath = Path.Combine(Application.StartupPath, "tempInfo.xml");
-                try
-                {
-                    if (File.Exists(_tempInfoXmlPath))
-                    {
-                        var lstBarMC = Utils.GetObject<List<Object.tempInfo>>(_tempInfoXmlPath);
-                        foreach (var barMC in lstBarMC)
-                            tempInfoBindingSource.List.Add(new View.tempInfo()
-                            {
-                                tempObj = barMC
                             });
                     }
                 }
@@ -475,6 +430,11 @@ namespace HDCGStudio
                     gvTempInfo.RefreshData();
 
                     List<Object.Property> runtimeProperties = new List<Object.Property>();
+                    runtimeProperties.Add(new Object.Property()
+                    {
+                        Name = "Loops",
+                        Value = "false"
+                    });
                     tempName = getTemplateName(tempInfoView.tempObj.TemplateName.ToString());
                     System.Threading.Timer timer = null;
                     timer = new System.Threading.Timer((obj) =>
@@ -692,8 +652,9 @@ namespace HDCGStudio
                     }));
 
                     string templateFile = "HDTemplates\\" + tempName;
-                    if (!cgServer.Connect())
-                        HDMessageBox.Show("Not connect to cg server!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (!cgServer.Connect()) {
+                        //HDMessageBox.Show("Not connect to cg server!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                     else
                     {
                         if (!cgServer.LoadCG(templateFile, tempInfoView.tempObj.Layer))
@@ -812,10 +773,13 @@ namespace HDCGStudio
             if (cboTemplateType.Text == "Bóng đá")
             {
                 _templateXmlPath = Path.Combine(Application.StartupPath, "BongDaTemplateList.xml");
+                _tempInfoXmlPath = Path.Combine(Application.StartupPath, "BongDaTempInfo.xml");
             }
             else
+            {
                 _templateXmlPath = Path.Combine(Application.StartupPath, "TemplateList.xml");
-
+                _tempInfoXmlPath = Path.Combine(Application.StartupPath, "tempInfo.xml");
+            }
             try
             {
                 if (File.Exists(_templateXmlPath))
@@ -837,7 +801,27 @@ namespace HDCGStudio
             {
                 HDMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            tempInfoBindingSource.List.Clear();
+            try
+            {
+                if (File.Exists(_tempInfoXmlPath))
+                {
+                    var lstBarMC = Utils.GetObject<List<Object.tempInfo>>(_tempInfoXmlPath);
+                    foreach (var barMC in lstBarMC)
+                        tempInfoBindingSource.List.Add(new View.tempInfo()
+                        {
+                            tempObj = barMC
+                        });
+                }
+                else
+                {
+                    File.Create(_tempInfoXmlPath).Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                HDMessageBox.Show(ex.Message, "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

@@ -50,10 +50,6 @@ namespace Svt.Caspar
                 Channel.Connection.SendString("CG " + Channel.ID + "-" + item.VideoLayer + " ADD " + item.Layer + " \"" + item.TemplateIdentifier + "\" " + (bAutoPlay ? "1" : "0") + " \"" + item.XMLData + "\"");
 		}
 
-
-
-
-
         public void Add(int layer, string template)
 		{
             Add(layer, template, false, string.Empty);
