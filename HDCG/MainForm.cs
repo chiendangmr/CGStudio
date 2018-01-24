@@ -109,7 +109,7 @@ namespace HDCGStudio
                 cgServer = new HDCGControler.CasparCG();
                 cgServer.Connect(AppSetting.Default.CGServerIP, AppSetting.Default.CGServerPort);
 
-                this.WindowState = FormWindowState.Normal;
+                this.WindowState = FormWindowState.Maximized;
                 for (int i = 0; i < gvTempInfo.DataRowCount; i++)
                 {
                     var tempOther = gvTempInfo.GetRow(i) as View.tempInfo;
@@ -685,12 +685,12 @@ namespace HDCGStudio
 
                     string templateFile = "HDTemplates\\" + tempName;
                     if (!cgServer.Connect())
-                        HDMessageBox.Show("Not connect to cg server!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        HDMessageBox.Show("Not connect to cg server!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     else
                     {
                         if (!cgServer.LoadCG(templateFile, tempInfoView.tempObj.Layer))
                         {
-                            HDMessageBox.Show("Can't load cg template", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            HDMessageBox.Show("Can't load cg template", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
 

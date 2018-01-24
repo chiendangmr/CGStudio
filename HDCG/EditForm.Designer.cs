@@ -28,13 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.player = new CGPreviewControl.FlashTemplateHostControl();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -63,7 +60,7 @@
             this.player.AspectControl = CGPreviewControl.FlashTemplateHostControl.Aspects.Aspect169;
             this.player.BackgroundColor = System.Drawing.Color.Empty;
             this.player.Location = new System.Drawing.Point(0, 0);
-            this.player.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.player.Margin = new System.Windows.Forms.Padding(5);
             this.player.Name = "player";
             this.player.ScaleMode = CGPreviewControl.FlashTemplateHostControl.ScaleModes.FullScreen;
             this.player.Size = new System.Drawing.Size(1253, 741);
@@ -86,10 +83,6 @@
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
             // groupControl1
             // 
             this.groupControl1.AutoSize = true;
@@ -103,12 +96,6 @@
             this.groupControl1.Size = new System.Drawing.Size(1249, 81);
             this.groupControl1.TabIndex = 5;
             this.groupControl1.Text = "groupControl1";
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 500;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // panelControl1
             // 
@@ -134,6 +121,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "EditForm";
             this.Text = "Preview and Update Template";
+            this.Shown += new System.EventHandler(this.EditForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -148,8 +136,6 @@
         private DevExpress.XtraEditors.SimpleButton btnUpdate;
         public CGPreviewControl.FlashTemplateHostControl player;
         private DevExpress.XtraEditors.SimpleButton btnClose;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
 

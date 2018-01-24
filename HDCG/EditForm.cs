@@ -119,22 +119,10 @@ namespace HDCGStudio
             xml = player.GetProperties();
             return "<Track_Property>" + xml.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&quot;", "\"").Replace("<string>", "").Replace("</string>", "").Replace("<Track_Property>", "");
         }
-              
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
 
+        private void EditForm_Shown(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (isClick)
-            {
-                //player.Invoke((Action)(() =>
-                //{
-                //    xml = player.GetProperties();
-                //}));
-                
-            }
-        }        
     }
 }
