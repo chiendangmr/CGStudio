@@ -24,7 +24,7 @@
 	import flash.globalization.NumberFormatter;
 	import flash.globalization.LocaleID;
 		
-	public class Update_BongDa_TheVang extends CasparTemplate{
+	public class BongDa_TheVang extends CasparTemplate{
 		
 		private var txtGroup:MovieClip = new MovieClip();
 					
@@ -32,10 +32,12 @@
 		public var title2:TextField = new TextField();
 		public var title3:TextField = new TextField();
 				
-		public function Update_BongDa_TheVang() {
+		public function BongDa_TheVang() {
 			// constructor code
 			super();							
-			
+			this.addChild(title1);	
+			this.addChild(title2);
+			this.addChild(title3);
 			ExternalInterface.addCallback("UpdateData", UpdateData);
 			ExternalInterface.addCallback("GetProperties", GetProperties);			
 		}		

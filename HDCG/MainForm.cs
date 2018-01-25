@@ -52,7 +52,7 @@ namespace HDCGStudio
 
                 cboVideoLayer.SelectedIndex = 0;
                 cboTempLayer.SelectedIndex = 5;
-                cboTemplateType.SelectedIndex = 0;                
+                cboTemplateType.SelectedIndex = 0;
 
                 _videoXmlPath = Path.Combine(Application.StartupPath, "Video.xml");
                 try
@@ -288,14 +288,22 @@ namespace HDCGStudio
                 var tempInfoView = gvTempInfo.GetFocusedRow() as View.tempInfo;
                 isPlaying = true;
                 if (isUpdated)
-
-                    if (frmInput.getXml() != null)
+                {
+                    try
                     {
-                        upOK = cgServer.FadeUp(layer, fadeUpDuration, frmInput.getXml());
+                        var strUpdate = frmInput.getXml();
+                        if (strUpdate != null)
+                        {
+                            upOK = cgServer.FadeUp(layer, fadeUpDuration, strUpdate);
+                        }
+                        else
+                            upOK = cgServer.CutUp(layer);
                     }
-                    else
-                        upOK = cgServer.CutUp(layer);
-
+                    catch (Exception ex)
+                    {
+                        HDMessageBox.Show("Không thể lấy thông tin update! - " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
                 System.Threading.Timer timer = null;
                 if (tempInfoView.tempObj.Duration > 0)
                 {
@@ -477,7 +485,7 @@ namespace HDCGStudio
 
                 isUpdated = true;
                 var tempInfoView = gvTempInfo.GetFocusedRow() as View.tempInfo;
-                tempName = getTemplateName(tempInfoView.tempObj.TemplateName.ToString());
+                tempName = "Update_" + getTemplateName(tempInfoView.tempObj.TemplateName.ToString());
 
                 UpdateTemplate(tempName, tempInfoView.tempObj.Layer);
 
@@ -652,7 +660,8 @@ namespace HDCGStudio
                     }));
 
                     string templateFile = "HDTemplates\\" + tempName;
-                    if (!cgServer.Connect()) {
+                    if (!cgServer.Connect())
+                    {
                         //HDMessageBox.Show("Not connect to cg server!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else

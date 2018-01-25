@@ -35,7 +35,9 @@
 		public function BongDa_TheVang() {
 			// constructor code
 			super();							
-			
+			this.addChild(title1);	
+			this.addChild(title2);
+			this.addChild(title3);
 			ExternalInterface.addCallback("UpdateData", UpdateData);
 			ExternalInterface.addCallback("GetProperties", GetProperties);			
 		}		

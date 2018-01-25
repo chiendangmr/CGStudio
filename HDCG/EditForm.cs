@@ -81,12 +81,11 @@ namespace HDCGStudio
             xmlStr = "<" + str + " id=\"" + str + "\"><data value=\"" + color + "\"/></" + str + ">";
             return xmlStr;
         }
-        bool isClick = false;
+        
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
-            {
-                isClick = true;
+            {                
                 xml = player.GetProperties();
                 fieldName = xml.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&quot;", "\"").Replace("<string>", "").Replace("</string>", "");
                 string xmlStr = "<Track_Property>" + fieldName.Replace("<Track_Property>", "");
@@ -111,8 +110,7 @@ namespace HDCGStudio
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
-            isClick = false;
+            this.Close();            
         }
         public string getXml()
         {
