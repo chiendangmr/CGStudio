@@ -31,13 +31,15 @@
 		public var title1:TextField = new TextField();
 		public var title2:TextField = new TextField();
 		public var title3:TextField = new TextField();
-				
+		
 		public function BongDa_TheVang() {
 			// constructor code
 			super();							
-			this.addChild(title1);	
-			this.addChild(title2);
-			this.addChild(title3);
+			this.txtGroup.addChild(title1);	
+			this.txtGroup.addChild(title2);
+			this.txtGroup.addChild(title3);
+			
+			this.addChild(txtGroup);
 			ExternalInterface.addCallback("UpdateData", UpdateData);
 			ExternalInterface.addCallback("GetProperties", GetProperties);			
 		}		
@@ -52,7 +54,7 @@
 			xmlStr +=Add(xmlStr, "title1", title1);
 			xmlStr +=Add(xmlStr, "title2", title2);
 			xmlStr +=Add(xmlStr, "title3", title3);
-			
+				
 			xmlStr += "</Track_Property>";
 			
 			ExternalInterface.call("Properties", xmlStr);
@@ -79,11 +81,16 @@
 						break;
 					case "title3".toLowerCase():
 						this.title3.text = data.toUpperCase();
-						break;																
+						break;												
 				}
 			}
-		}			
-		
+		}
+		public override function Play():void{
+			gotoAndPlay('start');
+		}
+		public override function Stop():void{
+			//this.stop();
+		}
 	}
 	
 }

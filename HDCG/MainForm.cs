@@ -479,6 +479,7 @@ namespace HDCGStudio
         {
             try
             {
+                //frmInput.Close();
                 frmInput = new EditForm("HDTemplates\\" + tempName);
 
                 frmInput.LoadTemplateHost(Path.Combine(AppSetting.Default.TemplateFolder, "cg20.fth.1080i5000"));
