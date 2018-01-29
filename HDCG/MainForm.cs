@@ -478,8 +478,7 @@ namespace HDCGStudio
         private void btnEditTemplate_Click(object sender, EventArgs e)
         {
             try
-            {
-                //frmInput.Close();
+            {                
                 frmInput = new EditForm("HDTemplates\\" + tempName);
 
                 frmInput.LoadTemplateHost(Path.Combine(AppSetting.Default.TemplateFolder, "cg20.fth.1080i5000"));
@@ -514,7 +513,6 @@ namespace HDCGStudio
                             Duration = int.Parse(numericUpDown1.Text),
                             Delay = int.Parse(numericUpDown2.Text),
                             Status = "Waiting"
-
                         }
                     });
 
