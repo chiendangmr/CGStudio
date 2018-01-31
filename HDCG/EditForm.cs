@@ -87,7 +87,7 @@ namespace HDCGStudio
             try
             {                
                 xml = player.GetProperties();
-                fieldName = xml.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&quot;", "\"").Replace("<string>", "").Replace("</string>", "");
+                fieldName = xml.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&quot;", "\"").Replace("<string>", "").Replace("</string>", "").Replace("~","");
                 string xmlStr = "<Track_Property>" + fieldName.Replace("<Track_Property>", "");
 
                 this.Clear();
@@ -115,7 +115,7 @@ namespace HDCGStudio
         public string getXml()
         {
             xml = player.GetProperties();
-            return "<Track_Property>" + xml.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&quot;", "\"").Replace("<string>", "").Replace("</string>", "").Replace("<Track_Property>", "");
+            return "<Track_Property>" + xml.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&quot;", "\"").Replace("<string>", "").Replace("</string>", "").Replace("<Track_Property>", "").Replace("~","");
         }
 
         private void EditForm_Shown(object sender, EventArgs e)

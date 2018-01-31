@@ -24,7 +24,7 @@
 	import flash.globalization.NumberFormatter;
 	import flash.globalization.LocaleID;
 		
-	public class BongDa_DanhSachDuBi extends CasparTemplate{
+	public class BongDa_TySoChinh extends CasparTemplate{
 		
 		private var txtGroup:MovieClip = new MovieClip();
 					
@@ -43,14 +43,9 @@
 		public var title13:TextField = new TextField();
 		public var title14:TextField = new TextField();
 		public var title15:TextField = new TextField();
-		public var title16:TextField = new TextField();
-		public var title17:TextField = new TextField();
-		public var title18:TextField = new TextField();
-		public var title19:TextField = new TextField();
-		public var title20:TextField = new TextField();
-		public var title21:TextField = new TextField();
-				
-		public function BongDa_DanhSachDuBi() {
+		public var title16:TextField = new TextField();		
+						
+		public function BongDa_TySoChinh() {
 			// constructor code
 			super();							
 			this.txtGroup.addChild(title1);	
@@ -66,14 +61,9 @@
 			this.txtGroup.addChild(title11);
 			this.txtGroup.addChild(title12);
 			this.txtGroup.addChild(title13);	
-			this.txtGroup.addChild(title14);
+			this.txtGroup.addChild(title14);			
 			this.txtGroup.addChild(title15);
-			this.txtGroup.addChild(title16);	
-			this.txtGroup.addChild(title17);
-			this.txtGroup.addChild(title18);
-			this.txtGroup.addChild(title19);	
-			this.txtGroup.addChild(title20);
-			this.txtGroup.addChild(title21);
+			this.txtGroup.addChild(title16);
 			
 			this.addChild(txtGroup);
 			ExternalInterface.addCallback("UpdateData", UpdateData);
@@ -92,22 +82,17 @@
 			xmlStr +=Add(xmlStr, "title3", title3);
 			xmlStr +=Add(xmlStr, "title4", title4);
 			xmlStr +=Add(xmlStr, "title5", title5);
-			xmlStr +=Add(xmlStr, "title6", title6);
+			xmlStr +=Add(xmlStr, "title6", title6);	
 			xmlStr +=Add(xmlStr, "title7", title7);
 			xmlStr +=Add(xmlStr, "title8", title8);
 			xmlStr +=Add(xmlStr, "title9", title9);
 			xmlStr +=Add(xmlStr, "title10", title10);
 			xmlStr +=Add(xmlStr, "title11", title11);
-			xmlStr +=Add(xmlStr, "title12", title12);
+			xmlStr +=Add(xmlStr, "title12", title12);	
 			xmlStr +=Add(xmlStr, "title13", title13);
 			xmlStr +=Add(xmlStr, "title14", title14);
 			xmlStr +=Add(xmlStr, "title15", title15);
-			xmlStr +=Add(xmlStr, "title16", title16);
-			xmlStr +=Add(xmlStr, "title17", title17);
-			xmlStr +=Add(xmlStr, "title18", title18);
-			xmlStr +=Add(xmlStr, "title19", title19);
-			xmlStr +=Add(xmlStr, "title20", title20);
-			xmlStr +=Add(xmlStr, "title21", title21);
+			xmlStr +=Add(xmlStr, "title16", title16);	
 			xmlStr += "</Track_Property>";
 			
 			ExternalInterface.call("Properties", xmlStr);
@@ -143,24 +128,24 @@
 						break;
 					case "title6".toLowerCase():
 						this.title6.text = data.toUpperCase();
-						break;
+						break;	
 					case "title7".toLowerCase():
-						this.title7.text = data.toUpperCase();
+						this.title7.text = data;
 						break;
 					case "title8".toLowerCase():
-						this.title8.text = data.toUpperCase();
+						this.title8.text = data;
 						break;
 					case "title9".toLowerCase():
 						this.title9.text = data.toUpperCase();
 						break;
 					case "title10".toLowerCase():
 						this.title10.text = data.toUpperCase();
-						break;
+						break;					
 					case "title11".toLowerCase():
-						this.title11.text = data.toUpperCase();
+						this.title11.text = data;
 						break;
 					case "title12".toLowerCase():
-						this.title12.text = data.toUpperCase();
+						this.title12.text = data;
 						break;
 					case "title13".toLowerCase():
 						this.title13.text = data.toUpperCase();
@@ -169,25 +154,11 @@
 						this.title14.text = data.toUpperCase();
 						break;
 					case "title15".toLowerCase():
-						this.title15
+						this.title15.text = data.toUpperCase();
+						break;
 					case "title16".toLowerCase():
 						this.title16.text = data.toUpperCase();
-						break;
-					case "title17".toLowerCase():
-						this.title17.text = data.toUpperCase();
-						break;
-					case "title18".toLowerCase():
-						this.title18.text = data.toUpperCase();
-						break;
-					case "title19".toLowerCase():
-						this.title19.text = data.toUpperCase();
-						break;
-					case "title20".toLowerCase():
-						this.title20.text = data.toUpperCase();
-						break;
-					case "title21".toLowerCase():
-						this.title21.text = data.toUpperCase();
-						break;					
+						break;			
 				}
 			}
 		}
